@@ -2,7 +2,11 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Mobile ticker speed and controls — release candidate
+## Latest release — mobile ticker speed and controls
+
+Source `34b832c` is pushed and deployed to `https://deepxsolution.com`.
+Production `dpl_9hTEZer6jvc4g3M7yVmWJyKeeMgK`
+(`deepx-d422pqghh-purich-w.vercel.app`) is Ready. Production HTML matches the build.
 
 Mobile ticker speed increases from 22 to 32px/s (38.5s per current eight-logo
 sequence). The owner requested removal of Play/Pause, so the control and its
@@ -13,6 +17,11 @@ Build/types and diff checks passed. Local 390px verification: 38.5s duration for
 a 1232px sequence (32px/s), zero ticker buttons, no reserved control padding,
 no horizontal overflow and no console warnings/errors. The 1280px partner markup
 matches the preceding desktop baseline exactly and renders no ticker.
+Production 390px verification confirms a running 38.5s animation, a 1232px
+sequence, zero ticker buttons, no horizontal overflow and no console warnings/
+errors. Evidence: `artifacts/ecosystem-ticker-faster-production.png` (ignored).
+Broader CMS/auth checks and physical-device testing were not repeated for this
+scoped adjustment. This closeout is documentation-only.
 
 ## Previous release — compact mobile hero and mobile-only ecosystem ticker
 
