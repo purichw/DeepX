@@ -2,6 +2,38 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
+## Current domain — deepxsolution.com
+
+The owner registered `deepxsolution.com` with Vercel. It is attached to
+`purich-w/deepx` and points to existing production deployment
+`dpl_FP8shW1XB1gFUdPBRNWt98fyDFYe`; this configuration-only cutover did not
+create a new deployment or change runtime source/content.
+
+- `https://deepxsolution.com/` and `/admin` return HTTP 200 with valid HTTPS.
+- `www.deepxsolution.com` and `deepxtech.vercel.app` use permanent 308 redirects
+  to `deepxsolution.com`. `/admin?domain_check=1` retains its path and query.
+- HTTP upgrades to HTTPS. DNS resolves through `ns1.vercel-dns.com` and
+  `ns2.vercel-dns.com`; Vercel reports the project domains verified.
+- Supabase project `yazamwbukbtetzqmqcpm` now has Site URL
+  `https://deepxsolution.com` and exact allowed redirect
+  `https://deepxsolution.com/admin`. Existing Vercel/local-development redirect
+  entries were preserved. The API configuration was read back after the update.
+- Public HTML matches the existing local release artifact byte-for-byte;
+  its JS/CSS return 200. The alias API confirms the production deployment ID.
+  The immutable deployment URL requires Vercel login for an unauthenticated
+  request, so its login HTML is not used for artifact comparison.
+- In-app browser renders Thai content, autoplaying muted hero video
+  (`readyState=4`) and no broken loaded images or warning/error logs. The new
+  `/admin` renders the unauthenticated login guard. Evidence:
+  `artifacts/custom-domain-home.png` (ignored).
+
+No new magic-link email, authenticated CMS save/publish roundtrip, database
+migration, mobile sweep or build was needed/run for this host configuration.
+CMS contact content (including its pre-existing website link) was not edited.
+Recovery: remove the old-host redirect and restore Supabase Site URL to
+`https://deepxtech.vercel.app`; the production deployment is unchanged. Inspect
+current domain ownership/configuration before any removal or reversal.
+
 ## Latest update — full-banner hero video
 
 Source `a0b92a0a1d0d98c549e9a9ab46907cd95764f2cd` is pushed and deployed to
