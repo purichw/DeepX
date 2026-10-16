@@ -60,10 +60,11 @@ Together the files are 762,794 bytes versus 10,091,221 source bytes (about 92%
 smaller). All four outputs decode successfully. Source paths, dimensions, byte
 sizes and output SHA-256 hashes are in ignored `artifacts/industry-image-manifest.json`.
 
-These fresh local paths preserve the earlier files and migrations. Uploading
-through the CMS creates separate immutable Storage URLs; the saved `industries`
-record owns the public path, alt text and focal point after upload/publication.
-Local conversion is not proof of CMS publication or deployed image rendering.
+These fresh local paths preserve the earlier files and migrations. The CMS
+`industries` record selects these bundled paths, both-language alt text and focal
+points; publication revision 5 and production rendering were verified. Future
+uploads through the CMS create separate immutable Storage URLs, which editors
+can select without changing the renderer. See [RELEASE.md](RELEASE.md) for evidence.
 
 ## Initial bootstrap media (retained)
 

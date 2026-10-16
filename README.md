@@ -2,6 +2,9 @@
 
 เว็บไซต์บริษัท Deep Tech / AI Solutions จากงานวิจัยสู่การใช้งานจริงสำหรับองค์กร
 
+เว็บไซต์: [deepxtech.vercel.app](https://deepxtech.vercel.app)
+· CMS: [เข้าสู่ระบบผู้ดูแล](https://deepxtech.vercel.app/admin)
+
 ## เริ่มอ่าน
 
 - [Project brief](docs/PROJECT_BRIEF.md) — Business Model Canvas, ขอบเขตเว็บไซต์, mockup และข้อเท็จจริงที่เผยแพร่ได้
@@ -55,7 +58,7 @@ VITE_LOCAL_CONTENT_PREVIEW=1 npm run dev
 
 - GitHub: <https://github.com/purichw/DeepX>
 - Supabase: `yazamwbukbtetzqmqcpm`
-- Vercel URL ที่เลือก: `deepxtech.vercel.app` (`deepx.vercel.app` ถูกใช้แล้ว); ดูสถานะ deploy ใน [Release runbook](docs/RELEASE.md)
+- Production: [deepxtech.vercel.app](https://deepxtech.vercel.app) (`deepx.vercel.app` ถูกใช้แล้ว); ดูหลักฐาน release ใน [Release runbook](docs/RELEASE.md)
 - เว็บไซต์ทางการที่ผู้ใช้ระบุ: <https://deepx.tech>
 - ภาษาเริ่มต้น: ไทย; รองรับ EN และจดจำภาษาบนเบราว์เซอร์
 
