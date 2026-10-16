@@ -109,9 +109,10 @@ Full asset search, deletion, private storage and shared rights metadata are defe
 `hero.videoUrl` and `hero.videoPoster` are optional, independently clearable CMS
 fields. `HeroMedia` fills the desktop/tablet hero background with `object-fit: cover`.
 At widths up to 600px, the same media remains an absolute background inside the
-banner. Its full-width 16:9 frame uses `object-fit: contain`, sits toward the
-lower banner area, and blends into the background with a gradient mask. The copy
-reserves space so the animated DeepX mark stays visible. Desktop background
+banner, behind the copy/actions. Its 16:9 frame is 170% of the viewport width,
+centered horizontally at 40% of the banner height. This crops the empty sides
+while keeping the central animated mark and wordmark inside the viewport.
+Gradient masking blends its edges into the background. Desktop background
 gradients preserve text contrast. Playback is automatic,
 muted and looping without controls; it pauses
 offscreen or in hidden tabs. Reduced motion shows the poster/static fallback,

@@ -2,7 +2,21 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Latest release — mobile banner background correction
+## Mobile banner crop refinement — release candidate
+
+The mobile video is back behind the main banner copy/actions. The 16:9 frame is
+scaled to 170% width, centered horizontally at 40% of the banner height. Empty
+left/right scenery is cropped while the central DeepX mark and wordmark remain
+inside the viewport. The prior bottom placement and reserved copy padding are
+removed. CMS media and playback behavior are unchanged; desktop/tablet CSS is
+unchanged. TypeScript/production build and diff checks passed. Local 390px Thai
+and 320px English renders show the complete animated mark/wordmark inside the
+viewport, behind the copy and above the solid CTA. Neither viewport overflows.
+At 1280px the video retains its full-banner `cover` behavior with no transform.
+Browser warning/error logs are empty. Evidence:
+`artifacts/mobile-hero-brand-crop-local.png` (ignored).
+
+## Previous release — mobile banner background correction
 
 Source `7c3c876` is pushed to `main` and deployed to `https://deepxsolution.com`.
 Deployment `dpl_6HbNvsYtWh52k7kdmpuqGwdxznFu`
