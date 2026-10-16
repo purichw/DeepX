@@ -44,6 +44,7 @@ import { Modal } from "./components/Modal";
 import { Rail } from "./components/Rail";
 import { Button, CardAction } from "./components/Action";
 import { HeroMedia } from "./components/HeroMedia";
+import { PartnerTicker } from "./components/PartnerTicker";
 
 const icons: Record<string, LucideIcon> = {
   atom: Atom,
@@ -283,7 +284,10 @@ export function Website({ data }: { data: SiteData }) {
         </div>
       </header>
       <main id="main">
-        <section className={`hero${c.hero.videoUrl ? " hero--video" : ""}`} id="home">
+        <section
+          className={`hero${c.hero.videoUrl ? " hero--video" : ""}`}
+          id="home"
+        >
           <div className="hero-atmosphere" aria-hidden="true" />
           <div className="container hero-grid">
             <div className="hero-copy">
@@ -505,27 +509,14 @@ export function Website({ data }: { data: SiteData }) {
         <section className="section ecosystem-section container" id="ecosystem">
           <div className="reveal">
             {sectionTitle(c.ecosystem)}
-            {data.partners.length > 0 &&
-              rail(
-                "partner-strip",
-                c.partners.title,
-                data.partners.map((partner) => (
-                  <a
-                    className={`partner-logo ${partner.surface === "light" ? "partner-logo-light" : ""}`}
-                    key={partner.id}
-                    href={partner.website_url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <img
-                      src={partner.logo_url}
-                      alt={partner.name}
-                      loading="lazy"
-                    />
-                  </a>
-                )),
-                data.partners.length,
-              )}
+            <PartnerTicker
+              partners={data.partners}
+              label={t(c.partners.title)}
+              locale={locale}
+              previous={t(c.ui.previous)}
+              next={t(c.ui.next)}
+              slide={t(c.ui.slide)}
+            />
             <div className="ecosystem-grid">
               {c.ecosystem.items.map((item) => (
                 <button

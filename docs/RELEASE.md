@@ -2,7 +2,28 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Latest release — mobile banner crop refinement
+## Compact mobile hero and ecosystem ticker — release candidate
+
+The mobile hero no longer has a forced 640px minimum height. Its action-to-expertise
+gap is 33px (390px Thai hero: approximately 519px tall), removing the empty band
+while preserving the background brand crop. The video is centered at 50% of the
+content-sized banner to keep its placement close to the preceding layout.
+
+Ecosystem logos on mobile only (up to 640px) now loop left-to-right at 22px/s with
+CMS order, assets and links. One measured sequence determines the duration:
+56s at 390px for the current eight logos. Explicit pause/resume, hover pause,
+offscreen/hidden-tab pause, stable keyboard links and a reduced-motion static
+layout are provided. Desktop/tablet use the original Rail and grid; other mobile
+card rails are unchanged. At 1280px the candidate partner markup, all eight logo
+widths and hero height match the current production baseline exactly.
+
+Local build/types and diff checks passed. Local 390px hero and mobile ticker
+renders were inspected; pause freezes position, resume restarts motion, and Tab
+reaches all eight original links through Google Cloud with no duplicate tab stops
+or page overflow. All 16 rendered image instances decoded after entering view.
+Final candidate and production verification follow below. No CMS data/auth changes.
+
+## Previous release — mobile banner crop refinement
 
 Source `88535ba` is pushed to `main` and deployed at `https://deepxsolution.com`.
 Production deployment `dpl_BU6T3EKY6LEeSiUgiixmnY37u9R6`

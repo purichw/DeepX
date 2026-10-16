@@ -35,6 +35,7 @@ allowlist. No service key, database password or management token reaches the bro
 | `src/cms/` | CMS auth client, section navigation, editor fields and draft/publication workflow |
 | `src/components/` | Neural X, accessible native dialog, mobile card rail |
 | `src/components/HeroMedia.tsx` | CMS hero video/poster rendering, reduced-motion fallback and visibility-aware playback |
+| `src/components/PartnerTicker.tsx` | CMS-driven logo sequence, constant-speed motion, pause and keyboard/static access |
 | `src/styles.css` | DeepX brand roles and responsive rendering |
 | `public/images/` | Licensed initial image assets, addressed by CMS URLs |
 | `public/videos/` | Optimized owner-supplied MP4 renditions; provenance in `docs/ASSETS.md` |
@@ -110,7 +111,8 @@ Full asset search, deletion, private storage and shared rights metadata are defe
 fields. `HeroMedia` fills the desktop/tablet hero background with `object-fit: cover`.
 At widths up to 600px, the same media remains an absolute background inside the
 banner, behind the copy/actions. Its 16:9 frame is 170% of the viewport width,
-centered horizontally at 40% of the banner height. This crops the empty sides
+centered horizontally at 50% of the banner height. The mobile hero follows its
+content height, with a 33px gap between actions and the expertise strip. This crops the empty sides
 while keeping the central animated mark and wordmark inside the viewport.
 Gradient masking blends its edges into the background. Desktop background
 gradients preserve text contrast. Playback is automatic,
@@ -119,6 +121,16 @@ offscreen or in hidden tabs. Reduced motion shows the poster/static fallback,
 and absent video restores the original Neural X and its CMS caption. The renderer
 uses one video URL at all viewport sizes; the prepared mobile rendition is an
 optional editorial choice, not an automatically selected source.
+
+On mobile (up to 640px), the ecosystem uses `PartnerTicker` with the published
+partner order, names, URLs and light/dark surfaces. Desktop/tablet retain the
+existing `Rail` renderer and original grid. Mobile moves left-to-right at 22px/s; duration is measured
+from one complete logo sequence. A duplicate visual sequence is hidden from
+assistive technology and the tab order. Pointer hover and the pause control stop
+motion. Keyboard focus exposes a single stable, horizontally scrollable set of
+links; reduced motion shows a wrapping static set. Offscreen/hidden tabs pause.
+Pause/resume accessibility labels are bilingual operational control strings;
+partner content and the region label remain CMS-owned.
 
 ## Routes and interactions
 
