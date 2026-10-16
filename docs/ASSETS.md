@@ -9,6 +9,18 @@ The three mockups were supplied by the project owner on 2026-10-16:
 These references are excluded from the deployed website. Their illustrated
 partner logos and outcome numbers are not evidence of actual relationships/results.
 
+## Owner-supplied SUT ecosystem logo (2026-10-16)
+
+The owner supplied `codex-clipboard-52c87913-326a-4775-a714-390ebbdd5101.png`
+and requested it first, before Chula. The original transparent PNG is 1211 × 946,
+55,420 bytes, SHA-256
+`f7100e3cd3859dabfdca02f3ce22d949359a0dda3a1042bf3f667597d793a70c`.
+It was uploaded unchanged through authenticated CMS to `cms-media`, saved/reopened
+and published as revision 6. The record is named Suranaree University of Technology,
+uses a dark surface, and links to <https://www.sut.ac.th/>. Public read-back confirms
+it precedes Chula and the prior seven records/other content are unchanged.
+The logo and ordering remain CMS-owned; no seed or component embeds this record.
+
 ## Owner-supplied hero animation
 
 On 2026-10-16 the owner supplied `DeepX_Hero_AI_4K.mp4` from
