@@ -14,6 +14,13 @@
 - [Asset sources](docs/ASSETS.md) — ภาพอ้างอิงและสิทธิ์ภาพประกอบ
 - [SEO และ Google Search Console](docs/SEO.md) — metadata จาก CMS, sitemap, canonical และการส่งเว็บเข้า Google
 
+## นโยบาย push / deploy
+
+ตั้งแต่ 17 ตุลาคม 2026 **ห้าม push หรือ deploy อัตโนมัติ** ต้องรอคำสั่งชัดเจน
+จากเจ้าของสำหรับงานแต่ละรอบ คำอนุญาตในรอบก่อนใช้ต่อกับงานใหม่ไม่ได้
+เมื่อแก้และตรวจงานเสร็จ ให้รายงานว่าพร้อมแล้วและรอคำสั่ง; สั่ง push อย่างเดียว
+ไม่เท่ากับอนุญาต deploy ดูกฎที่ [AGENTS.md](AGENTS.md) และ [Release runbook](docs/RELEASE.md)
+
 ## Development
 
 Node.js 22.12+ (แนะนำ Node 24 LTS), npm และ Supabase CLI

@@ -6,6 +6,23 @@ Read `README.md`, `docs/PROJECT_MAP.md`, `docs/CMS.md`, and the scope-specific s
 `docs/RELEASE.md`. Use `project-onboarding` for a new session. Inspect
 `git status --short --branch` before edits and preserve unrelated changes.
 
+## Push and deploy policy — owner instruction, 2026-10-17
+
+- **Do not push or deploy automatically.** Wait for an explicit user instruction
+  covering those actions for the current round of work, including preview
+  deployment and production promotion.
+- Earlier requests such as “push deploy when finished” are not standing approval
+  for later work. This policy supersedes that earlier blanket authorization.
+- A request to implement, fix, test or finish work does not authorize push/deploy.
+  Complete local work and relevant checks, then report readiness and wait.
+- A push-only instruction does not authorize deployment. Check whether pushing
+  would trigger an automatic deployment before executing that narrower request.
+  Do not enable automatic deployment workflows without explicit authorization.
+- Once the user explicitly requests push/deploy for that round, proceed within
+  the stated scope without asking for duplicate confirmation.
+- New-chat onboarding must carry this policy forward; historical release entries
+  are evidence of past work, not permission for new remote actions.
+
 ## Product and content
 
 - The company is **DeepX**. “Deep Tech” describes the category, not a second brand.

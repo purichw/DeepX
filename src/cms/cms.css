@@ -487,8 +487,8 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  padding-bottom: 20px;
-  margin-bottom: 22px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
   border-bottom: 1px solid #263f4d;
 }
 .cms-panel-title svg {
@@ -548,6 +548,60 @@
   font-size: 10px;
   margin-top: 6px;
   overflow-wrap: anywhere;
+}
+/* Compact editor rows share one layout across all sections and nested records.
+   Login fields keep their own layout; narrow editors stack labels for readability. */
+.cms-editor-fieldset,
+.cms-fields,
+.cms-entry-content {
+  container: cms-fields / inline-size;
+}
+.cms-editor-fieldset .cms-field {
+  margin-bottom: 16px;
+}
+.cms-editor-fieldset .cms-field > label {
+  text-align: left;
+  margin-bottom: 5px;
+  line-height: 1.6;
+}
+.cms-editor-fieldset .cms-field input:not([type="file"]),
+.cms-editor-fieldset .cms-field textarea,
+.cms-editor-fieldset .cms-field select {
+  padding-block: 8px;
+  min-height: 40px;
+}
+.cms-editor-fieldset .cms-content-textarea {
+  min-height: 40px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.cms-editor-fieldset .cms-field > .cms-helper {
+  margin-top: 4px;
+}
+.cms-fields > .cms-field:last-child {
+  margin-bottom: 0;
+}
+@container cms-fields (min-width: 560px) {
+  .cms-field {
+    display: grid;
+    grid-template-columns: 148px minmax(0, 1fr);
+    column-gap: 16px;
+    row-gap: 4px;
+    align-items: start;
+  }
+  .cms-editor-fieldset .cms-field > label {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-top: 9px;
+    margin: 0;
+  }
+  .cms-field > :not(label) {
+    grid-column: 2;
+    min-width: 0;
+  }
+  .cms-editor-fieldset .cms-field > .cms-helper {
+    margin: 0;
+  }
 }
 .cms-language-badge {
   font-family: "Manrope Variable", "Noto Sans Thai Variable", sans-serif;
@@ -670,8 +724,8 @@
   display: flex;
   align-items: center;
   gap: 11px;
-  min-height: 55px;
-  padding: 13px;
+  min-height: 46px;
+  padding: 10px 13px;
   cursor: pointer;
   list-style: none;
 }
@@ -707,8 +761,8 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  padding-bottom: 16px;
-  margin-bottom: 18px;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
   border-bottom: 1px solid #263f4d;
 }
 .cms-entry-tools > span {
@@ -724,7 +778,7 @@
 .cms-record-id {
   font-size: 9px;
   color: #829caa;
-  padding-bottom: 18px;
+  padding-bottom: 10px;
   overflow-wrap: anywhere;
 }
 .cms-record-id code {
@@ -748,8 +802,8 @@
   margin-top: 5px;
 }
 .cms-media-preview {
-  min-height: 130px;
-  height: 180px;
+  min-height: 120px;
+  height: 140px;
   border: 1px dashed #365668;
   border-radius: 6px;
   margin-bottom: 12px;
@@ -773,12 +827,42 @@
 }
 .cms-media-actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
   margin-top: 10px;
 }
 .cms-media-actions .cms-button {
   font-size: 11px;
+}
+.cms-media-control {
+  min-width: 0;
+}
+@container cms-fields (min-width: 700px) {
+  .cms-media-control {
+    display: grid;
+    grid-template-columns: 144px minmax(0, 1fr);
+    gap: 8px 12px;
+    align-items: start;
+  }
+  .cms-media-preview {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 120px;
+    margin: 0;
+  }
+  .cms-media-control > input,
+  .cms-media-actions {
+    grid-column: 2;
+  }
+  .cms-media-actions {
+    margin: 0;
+    align-self: start;
+  }
+  .cms-media-control > p {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
 }
 .cms-upload {
   position: relative;
@@ -798,22 +882,29 @@
   cursor: pointer;
 }
 .cms-root .cms-crop {
-  padding: 16px;
-  margin: 0 0 24px;
+  padding: 12px;
+  margin: 0 0 16px;
   border: 1px solid #315064;
   border-radius: 7px;
 }
 .cms-crop legend {
-  text-align: center;
+  text-align: left;
   padding-inline: 8px;
   font-size: 12px;
 }
 .cms-crop label {
-  text-align: center;
+  text-align: left;
   display: block;
   font-size: 10px;
-  margin-top: 13px;
+  margin: 0;
   color: #b1c8d4;
+}
+.cms-crop > div {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  align-items: center;
+  gap: 4px 12px;
+  margin-top: 6px;
 }
 .cms-crop input {
   display: block;
@@ -1100,6 +1191,14 @@
   }
   .cms-field > label {
     font-size: 12px;
+  }
+  .cms-editor-fieldset .cms-field input:not([type="file"]),
+  .cms-editor-fieldset .cms-field textarea,
+  .cms-editor-fieldset .cms-field select,
+  .cms-editor-fieldset .cms-button,
+  .cms-editor-fieldset .cms-icon-button,
+  .cms-crop input {
+    min-height: 44px;
   }
   .cms-entry-content {
     padding: 15px 11px;

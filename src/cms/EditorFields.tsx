@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useId, useLayoutEffect, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowUp,
@@ -43,6 +43,34 @@ const multiline = new Set([
   "visualCaption",
   "outcomes",
 ]);
+
+// Keep one textarea mounted while its content, language or available width changes.
+function ContentTextarea(
+  props: React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+  useLayoutEffect(() => {
+    const field = ref.current;
+    if (!field) return;
+    const fit = () => {
+      if (!field.clientWidth) return; // Collapsed list entries resize when opened.
+      field.style.height = "auto";
+      const style = getComputedStyle(field);
+      field.style.height = `${field.scrollHeight + parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth)}px`;
+    };
+    fit();
+    let width = field.clientWidth;
+    const observer = new ResizeObserver(() => {
+      if (field.clientWidth !== width) {
+        width = field.clientWidth;
+        fit();
+      }
+    });
+    observer.observe(field);
+    return () => observer.disconnect();
+  }, [props.value]);
+  return <textarea {...props} ref={ref} className="cms-content-textarea" />;
+}
 
 async function validateVideo(file: File): Promise<void> {
   const objectUrl = URL.createObjectURL(file);
@@ -138,94 +166,96 @@ function MediaField({
   return (
     <div className="cms-field cms-media-field">
       <label htmlFor={inputId}>{label}</label>
-      <div className="cms-media-preview">
-        {value && !broken ? (
-          isVideo ? (
-            <video
-              key={value}
-              src={value}
-              aria-label="วิดีโอที่เลือกไว้"
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              style={{ width: "100%", height: "100%", objectFit: "contain" }}
-              onError={() => setBroken(true)}
-            />
+      <div className="cms-media-control">
+        <div className="cms-media-preview">
+          {value && !broken ? (
+            isVideo ? (
+              <video
+                key={value}
+                src={value}
+                aria-label="วิดีโอที่เลือกไว้"
+                controls
+                muted
+                playsInline
+                preload="metadata"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                onError={() => setBroken(true)}
+              />
+            ) : (
+              <img
+                key={value}
+                src={value}
+                alt="ภาพที่เลือกไว้"
+                onError={() => setBroken(true)}
+              />
+            )
           ) : (
-            <img
-              key={value}
-              src={value}
-              alt="ภาพที่เลือกไว้"
-              onError={() => setBroken(true)}
+            <span>
+              {isVideo ? <Video size={26} /> : <ImagePlus size={26} />}
+              {value
+                ? "โหลดตัวอย่างสื่อไม่ได้"
+                : isVideo
+                  ? "ยังไม่ได้เลือกวิดีโอ"
+                  : "ยังไม่ได้เลือกรูปภาพ"}
+            </span>
+          )}
+        </div>
+        <input
+          id={inputId}
+          type="text"
+          value={value}
+          placeholder={
+            isVideo ? "https://… หรือ /videos/…mp4" : "https://… หรือ /images/…"
+          }
+          onChange={(event) => {
+            onChange(path, event.target.value);
+            setBroken(false);
+          }}
+        />
+        <div className="cms-media-actions">
+          <label className="cms-button cms-upload">
+            <Upload size={16} />
+            {busy ? "กำลังอัปโหลด…" : isVideo ? "อัปโหลดวิดีโอ" : "อัปโหลดรูป"}
+            <input
+              type="file"
+              accept={
+                isVideo ? "video/mp4,.mp4" : "image/jpeg,image/png,image/webp"
+              }
+              disabled={busy}
+              onChange={(event) => {
+                void upload(event.target.files?.[0]);
+                event.currentTarget.value = "";
+              }}
             />
-          )
-        ) : (
-          <span>
-            {isVideo ? <Video size={26} /> : <ImagePlus size={26} />}
-            {value
-              ? "โหลดตัวอย่างสื่อไม่ได้"
-              : isVideo
-                ? "ยังไม่ได้เลือกวิดีโอ"
-                : "ยังไม่ได้เลือกรูปภาพ"}
-          </span>
+          </label>
+          {["image", "videoPoster", "videoUrl"].includes(String(path.at(-1))) &&
+            value && (
+              <button
+                type="button"
+                className="cms-button cms-quiet"
+                onClick={() => {
+                  onChange(path, "");
+                  setBroken(false);
+                }}
+              >
+                <X size={16} />
+                {isVideo ? "นำวิดีโอออก" : "นำรูปออก"}
+              </button>
+            )}
+        </div>
+        <p className="cms-helper">
+          {isVideo
+            ? "MP4 · ไม่เกิน 30 MB · แนะนำวิดีโอแนวนอนแบบไม่มีเสียง"
+            : "JPG, PNG, WebP · ไม่เกิน 5 MB"}
+          {" · ไฟล์ที่อัปโหลดมี URL สาธารณะ ใช้เฉพาะสื่อที่เผยแพร่ได้"}
+          {isVideo && " · ล้างค่าเพื่อนำวิดีโอออกจากส่วนเปิดหน้าเว็บ"}
+        </p>
+        {error && (
+          <p className="cms-inline-error" role="alert">
+            {error}
+          </p>
         )}
       </div>
-      <input
-        id={inputId}
-        type="text"
-        value={value}
-        placeholder={
-          isVideo ? "https://… หรือ /videos/…mp4" : "https://… หรือ /images/…"
-        }
-        onChange={(event) => {
-          onChange(path, event.target.value);
-          setBroken(false);
-        }}
-      />
-      <div className="cms-media-actions">
-        <label className="cms-button cms-upload">
-          <Upload size={16} />
-          {busy ? "กำลังอัปโหลด…" : isVideo ? "อัปโหลดวิดีโอ" : "อัปโหลดรูป"}
-          <input
-            type="file"
-            accept={
-              isVideo ? "video/mp4,.mp4" : "image/jpeg,image/png,image/webp"
-            }
-            disabled={busy}
-            onChange={(event) => {
-              void upload(event.target.files?.[0]);
-              event.currentTarget.value = "";
-            }}
-          />
-        </label>
-        {["image", "videoPoster", "videoUrl"].includes(String(path.at(-1))) &&
-          value && (
-            <button
-              type="button"
-              className="cms-button cms-quiet"
-              onClick={() => {
-                onChange(path, "");
-                setBroken(false);
-              }}
-            >
-              <X size={16} />
-              {isVideo ? "นำวิดีโอออก" : "นำรูปออก"}
-            </button>
-          )}
-      </div>
-      <p className="cms-helper">
-        {isVideo
-          ? "MP4 · ไม่เกิน 30 MB · แนะนำวิดีโอแนวนอนแบบไม่มีเสียง"
-          : "JPG, PNG, WebP · ไม่เกิน 5 MB"}
-        {" · ไฟล์ที่อัปโหลดมี URL สาธารณะ ใช้เฉพาะสื่อที่เผยแพร่ได้"}
-        {isVideo && " · ล้างค่าเพื่อนำวิดีโอออกจากส่วนเปิดหน้าเว็บ"}
-      </p>
-      {error && (
-        <p className="cms-inline-error" role="alert">
-          {error}
-        </p>
-      )}
     </div>
   );
 }
@@ -358,6 +388,7 @@ export function EditorFields(props: Props) {
       const isMulti = multiline.has(key) || typeof path.at(-1) === "number";
       const common = {
         id: inputId,
+        "aria-describedby": `${inputId}-hint`,
         value: String(record[locale]),
         lang: locale,
         onChange: (
@@ -373,14 +404,14 @@ export function EditorFields(props: Props) {
             </span>
           </label>
           {isMulti ? (
-            <textarea
+            <ContentTextarea
               {...common}
-              rows={key === "detail" || key === "body" ? 5 : 3}
+              rows={key === "detail" || key === "body" ? 3 : 1}
             />
           ) : (
             <input {...common} type="text" />
           )}
-          <p className="cms-helper">
+          <p className="cms-helper" id={`${inputId}-hint`}>
             {record[locale === "th" ? "en" : "th"]
               ? `${locale === "th" ? "English" : "ภาษาไทย"}: ${String(record[locale === "th" ? "en" : "th"]).slice(0, 90)}${String(record[locale === "th" ? "en" : "th"]).length > 90 ? "…" : ""}`
               : `ยังไม่มี${locale === "th" ? "ภาษาอังกฤษ" : "ภาษาไทย"} — กรุณากรอกก่อนบันทึก`}

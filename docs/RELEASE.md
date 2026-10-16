@@ -2,6 +2,20 @@
 
 Updated: 2026-10-17 (Asia/Bangkok).
 
+## Authorization before push or deploy
+
+Owner instruction effective 2026-10-17: **never push or deploy automatically**.
+This supersedes earlier standing requests to push/deploy after completing work.
+Each round needs an explicit user instruction for the requested remote actions.
+Implementation, fixes, tests or documentation requests alone do not grant it.
+Complete local work and checks, report readiness, and wait for that instruction.
+
+Push and deployment are separate permissions. Preview deployments and production
+promotion are also covered. Check for automatic deployment triggers before a
+push-only action; do not enable deployment automation without explicit approval.
+An explicit instruction for the current round does not need repeat confirmation.
+The runbook commands and historical releases below do not grant authorization.
+
 ## Latest release — Google discovery and CMS-driven SEO
 
 Source `9a665aa` is pushed and deployed to `https://deepxsolution.com`.
@@ -321,13 +335,20 @@ inside a rolled-back transaction and must leave no record.
 
 ## Gate for subsequent releases
 
+Apply only the actions explicitly authorized for this round under the policy
+above. Without a push/deploy instruction, stop after local verification and report
+readiness; do not execute the remote steps below automatically.
+
 1. Review intended files with `git status --short --branch` and `git diff --check`;
-   commit and push, then verify the exact remote SHA.
-2. Deploy one candidate and inspect its actual target. Prefer a preview for
+   prepare the intended commit and, when push is authorized, push and verify the
+   exact remote SHA.
+2. When deployment is authorized, deploy one candidate and inspect its actual
+   target. Prefer a preview for
    subsequent releases. Confirm `/`, `/admin`, the intended published revision,
    the four industry images, seven ecosystem logos and hero video/poster on that
    immutable URL. Inspect relevant asset/network failures and console errors.
-3. If the artifact is a preview, promote it once verified; if already production,
+3. If the artifact is a preview and production promotion is authorized, promote
+   it once verified; if already production,
    do not create a duplicate deployment or claim a separate promotion. Confirm
    `deepxtech.vercel.app` resolves to it and run the focused alias smoke.
 
@@ -337,7 +358,7 @@ relevant implementation changes, the repeatable local checks are `npm test`
 `npm run build` with real published data; never enable the local fixture flag for
 a release. Rerun only the affected database/browser checks where appropriate.
 
-Preview/production commands after the gate is met:
+Preview/production commands only after authorization and the gate are met:
 
 ```sh
 vercel --scope purich-w
@@ -352,8 +373,9 @@ and production promotion are separate states; report each explicitly.
 No CI workflow is configured for this candidate. No GitHub Actions workflow or
 Vercel Git integration existed in the initial repo.
 Do not claim CI or a remote source sync has run merely because a local build passes.
-Before enabling continuous deployment, connect `purichw/DeepX` deliberately and
-verify the intended production branch and required checks.
+Only if the owner explicitly requests continuous deployment, connect
+`purichw/DeepX` deliberately and verify the intended production branch and
+required checks. Do not enable it as part of ordinary implementation work.
 
 ## Deployment timing and delay checkpoints
 
