@@ -2,7 +2,11 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Mobile banner background correction — release candidate
+## Latest release — mobile banner background correction
+
+Source `7c3c876` is pushed to `main` and deployed to `https://deepxsolution.com`.
+Deployment `dpl_6HbNvsYtWh52k7kdmpuqGwdxznFu`
+(`deepx-4wfu47nhs-purich-w.vercel.app`) is Ready and carries the production aliases.
 
 The mobile video remains an absolute background inside the hero banner, with an
 uncropped, full-width 16:9 image toward the bottom. Gradient masking blends its
@@ -14,7 +18,13 @@ TypeScript/production build and diff checks passed. Local 390px Thai and 320px
 English checks confirmed full-width contained video with no horizontal overflow.
 The 320px capture shows the entire animated logo and DeepX wordmark inside the
 banner. Auth/CMS regression suites were not repeated for this CSS-only correction.
-Production verification is recorded after promotion below.
+Production HTML matches the local build exactly. At 390 × 844 the video is an
+absolute background layer (`z-index: -1`) with a 390 × 219.375 frame and
+`object-fit: contain`. It is decoded (readyState 4), playing, muted, looping,
+inline and without controls. There is no horizontal overflow or browser warning/
+error. Evidence: `artifacts/mobile-hero-background-production.png` (ignored).
+Physical iOS/Safari and reduced-motion emulation were not repeated. No second
+deployment is needed for the documentation-only verification closeout.
 
 ## Previous release — SUT ecosystem and uncropped mobile hero
 
