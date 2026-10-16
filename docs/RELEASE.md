@@ -1,8 +1,64 @@
 # Release runbook and current state
 
-Updated: 2026-10-16 (Asia/Bangkok).
+Updated: 2026-10-17 (Asia/Bangkok).
 
-## Latest release — mobile ticker speed and controls
+## Latest release — Google discovery and CMS-driven SEO
+
+Source `9a665aa` is pushed and deployed to `https://deepxsolution.com`.
+Deployment `dpl_96YCZbmae4zKjidP9TeNssZRZkiq`
+(`deepx-htilk4r4e-purich-w.vercel.app`) is Ready with the production aliases.
+Canonical-host HTML matches the local production build exactly.
+
+Added the canonical URL, a one-page XML sitemap and robots discovery, Google
+verification meta tag, CMS-derived Open Graph/Twitter image metadata, and
+Organization/WebSite JSON-LD. `/admin` returns `X-Robots-Tag: noindex, nofollow`.
+Editorial metadata retains CMS ownership and explicit empty-value behavior;
+canonical identity is deployment configuration, not the contact website field.
+No runtime UI/CSS or CMS schema/data/auth permissions changed. Public JS/CSS
+asset hashes match the preceding production build.
+
+Lighthouse 13.5.0 measured **SEO 100/100** on production for mobile and desktop
+at 01:40–01:41 on October 17, with no failing audits or run warnings. The mobile
+baseline was already 100; discovery and Search Console setup are additional
+work beyond that automated score. Performance/accessibility/best-practices scores
+were not measured in these SEO-only runs. All 12 content/editor/SEO tests, CMS
+schema parity, typecheck/build and diff checks passed.
+
+Production `/`, `/robots.txt`, `/sitemap.xml`, the social image and `/admin`
+return 200. Public responses have no noindex header; `/admin` and the tested
+`/admin/settings` rewrite have noindex. `/admin/` returns a real 404; the supported
+CMS entry remains `/admin`. Legacy Vercel and www aliases still return 308 to the
+canonical domain and retain path/query. No changes were made to route rewrites.
+
+### Google Search Console evidence
+
+- Verified ownership of URL-prefix property `https://deepxsolution.com/` using
+  its issued HTML meta tag. Keep the public tag after verification.
+- Submitted `/sitemap.xml`; Google reports **Sitemap processed successfully**,
+  last read October 17, with **1 discovered page**. The brief initial Couldn't
+  fetch state resolved on the detail view without resubmission or code changes.
+- URL Inspection reports **URL is on Google / Page is indexed**. Its indexed
+  snapshot shows a last crawl of October 16, 2026, 7:59 PM, Googlebot smartphone,
+  successful fetch and allowed crawl/indexing. This predates this SEO deployment;
+  the site was already indexed rather than newly indexed by our submission.
+- The live test on October 17 at 01:45:04 reports **URL is available to Google /
+  Page can be indexed**, successful smartphone fetch and the new user-declared
+  canonical `https://deepxsolution.com/`.
+- Requested indexing once for the updated metadata. Google confirmed **Indexing
+  requested** and addition to its priority crawl queue. The latest metadata's
+  replacement in Search results is asynchronous and is not claimed complete.
+
+Ignored evidence: `artifacts/seo-mobile.report.html`, `seo-desktop.report.html`,
+their JSON reports, `seo-lighthouse-summary.json`, `seo-production-checks.json`,
+`google-ownership-verified.png`, `google-sitemap-success.png`,
+`google-page-indexed.png`, `google-live-test-success.png`, and
+`google-indexing-requested.png`. The ongoing workflow is in [SEO.md](SEO.md).
+CMS authenticated write journeys and physical-device QA were not repeated for
+metadata/header changes. This verification closeout is documentation-only and
+does not need another deployment. Previous runtime is the ticker release below;
+retain a valid Search Console verification method if restoring older HTML.
+
+## Previous release — mobile ticker speed and controls
 
 Source `34b832c` is pushed and deployed to `https://deepxsolution.com`.
 Production `dpl_9hTEZer6jvc4g3M7yVmWJyKeeMgK`

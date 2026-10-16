@@ -1,6 +1,6 @@
 # Project map
 
-Updated: 2026-10-16. Distinguish intended behavior below from verified deployment
+Updated: 2026-10-17. Distinguish intended behavior below from verified deployment
 state in [RELEASE.md](RELEASE.md).
 The Thai operator guide and complete field groups are in [CMS.md](CMS.md).
 
