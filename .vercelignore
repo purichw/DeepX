@@ -1,0 +1,8 @@
+.git/
+docs/
+artifacts/
+tests/
+test-results/
+playwright-report/
+README.md
+AGENTS.md

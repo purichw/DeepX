@@ -1,0 +1,124 @@
+{
+  "site": {
+    "name": "DeepX", "descriptor": "DEEP TECH | AI SOLUTIONS",
+    "tagline": {"th": "Deep Ideas. Real Impact.", "en": "Deep Ideas. Real Impact."},
+    "title": {"th": "DeepX — จากงานวิจัย สู่ผลลัพธ์จริง", "en": "DeepX — Deep Ideas. Real Impact."},
+    "description": {"th": "เชื่อมงานวิจัย AI และข้อมูลเชิงลึก สู่โซลูชันที่ตอบโจทย์ธุรกิจ ตั้งแต่พิสูจน์แนวคิด พัฒนาระบบ จนถึงการใช้งานจริง", "en": "Bridging AI research and real-world implementation. Tailored deep tech solutions, from proof of concept to enterprise deployment."},
+    "email": "DeepX@deepxtech.com", "line": "@DeepX", "lineUrl": "https://line.me/R/ti/p/%40DeepX", "website": "https://deepx.tech", "linkedin": "https://www.linkedin.com/company/deepx", "defaultLocale": "th",
+    "navigation": [
+      {"label": {"th": "โซลูชัน", "en": "Solutions"}, "href": "#capabilities"},
+      {"label": {"th": "อุตสาหกรรม", "en": "Industries"}, "href": "#industries"},
+      {"label": {"th": "วิธีทำงาน", "en": "Our approach"}, "href": "#process"},
+      {"label": {"th": "การประยุกต์ใช้", "en": "Applications"}, "href": "#applications"},
+      {"label": {"th": "เกี่ยวกับเรา", "en": "About"}, "href": "#about"},
+      {"label": {"th": "ติดต่อ", "en": "Contact"}, "href": "#contact"}
+    ],
+    "footerText": {"th": "เทคโนโลยีที่ลึกขึ้น เพื่ออนาคตที่ดีกว่า", "en": "Deeper technology. A brighter tomorrow."},
+    "copyright": {"th": "สงวนลิขสิทธิ์", "en": "All rights reserved."}
+  },
+  "hero": {
+    "eyebrow": {"th": "ADVANCED AI. REAL-WORLD IMPACT.", "en": "ADVANCED AI. REAL-WORLD IMPACT."},
+    "title": {"th": "จาก AI ที่ซับซ้อน", "en": "From Complex AI to"},
+    "accent": {"th": "สู่โซลูชันที่ธุรกิจ\nใช้ได้จริง", "en": "Business-Ready\nSolutions"},
+    "body": {"th": "เชื่อมงานวิจัยเชิงลึกกับการพัฒนาระบบจริง\nเพื่อเปลี่ยนโจทย์ที่ท้าทายให้เป็นโอกาสใหม่\nด้วย AI ที่ออกแบบมาสำหรับธุรกิจของคุณ", "en": "We bridge cutting-edge research with real-world implementation, helping organizations solve complex challenges through trusted, scalable AI solutions."},
+    "visualCaption": {"th": "HUMAN INTELLIGENCE\nAMPLIFIED.\nA BRIGHTER TOMORROW.", "en": "HUMAN INTELLIGENCE\nAMPLIFIED.\nA BRIGHTER TOMORROW."},
+    "trustLabel": {"th": "เชื่อมความเชี่ยวชาญ ตั้งแต่งานวิจัยถึงการใช้งานจริง", "en": "CONNECTING EXPERTISE. FROM RESEARCH TO REALITY."},
+    "fields": [{"th": "AI Research", "en": "AI Research"}, {"th": "Data Science", "en": "Data Science"}, {"th": "Engineering", "en": "Engineering"}, {"th": "Cloud & Scale", "en": "Cloud & Scale"}, {"th": "Business Impact", "en": "Business Impact"}]
+  },
+  "capabilities": {
+    "eyebrow": {"th": "OUR CAPABILITIES", "en": "OUR CAPABILITIES"},
+    "title": {"th": "โซลูชัน AI ตั้งแต่ต้นจนใช้งานจริง", "en": "End-to-end AI solutions"},
+    "description": {"th": "จากงานวิจัยสู่ระบบที่พร้อมใช้\nทุกขั้นตอนเริ่มจากโจทย์ธุรกิจของคุณ", "en": "From research to real-world deployment,\nwe build around your business challenges."},
+    "items": [
+      {"id": "research", "icon": "atom", "title": {"th": "AI Research\n& Development", "en": "AI Research\n& Development"}, "description": {"th": "วิจัยวันนี้\nเพื่อคำตอบของวันข้างหน้า", "en": "Research today.\nFor a better tomorrow."}, "detail": {"th": "ทำงานร่วมกับนักวิจัยผู้เชี่ยวชาญเพื่อศึกษาความเป็นไปได้ ออกแบบการทดลอง และพัฒนาโมเดล AI ที่เหมาะกับปัญหา โดยกำหนดตัวชี้วัดและข้อจำกัดของข้อมูลร่วมกันตั้งแต่ต้น", "en": "Work with specialist researchers to assess feasibility, design experiments, and develop AI models for your problem. We agree on evaluation criteria and data limitations from the start."}},
+      {"id": "data", "icon": "layers", "title": {"th": "Data & Model\nDevelopment", "en": "Data & Model\nDevelopment"}, "description": {"th": "ข้อมูลที่มีคุณภาพ\nสู่โมเดลที่เหมาะกับงาน", "en": "High-quality data.\nPurpose-built models."}, "detail": {"th": "วางระบบข้อมูล ตรวจสอบคุณภาพ และพัฒนาโมเดลให้ตรงกับบริบทการใช้งาน ทดสอบกับชุดข้อมูลที่แยกจากการฝึก พร้อมอธิบายขอบเขตความแม่นยำและข้อจำกัดก่อนนำไปใช้", "en": "Design data pipelines, assess data quality, and develop models around the intended use. Validate on held-out data and explain performance boundaries before deployment."}},
+      {"id": "engineering", "icon": "settings", "title": {"th": "Solution Engineering\n& Integration", "en": "Solution Engineering\n& Integration"}, "description": {"th": "เปลี่ยนโมเดลให้เป็น\nเครื่องมือที่ทีมใช้ได้จริง", "en": "From prototype\nto production."}, "detail": {"th": "ทีม BA, PM และนักพัฒนาช่วยแปลงโจทย์ธุรกิจและโมเดลวิจัยเป็นซอฟต์แวร์ เชื่อมต่อระบบเดิม ออกแบบประสบการณ์ใช้งาน และวางแผนส่งมอบร่วมกับทีมของคุณ", "en": "Business analysts, project managers, and developers turn research models into usable software, connect existing systems, and plan delivery with your team."}},
+      {"id": "grants", "icon": "flask", "title": {"th": "Applied Research\n& Grants", "en": "Applied Research\n& Grants"}, "description": {"th": "เชื่อมงานวิจัยและทุน\nสู่โอกาสสร้างนวัตกรรม", "en": "Turning research into\nreal-world impact."}, "detail": {"th": "ร่วมออกแบบโครงการวิจัยประยุกต์กับนักวิจัยและองค์กร เตรียมโจทย์ ขอบเขต ผลส่งมอบ และข้อเสนอขอทุนตามเงื่อนไขของแต่ละโครงการ การได้รับทุนขึ้นกับการพิจารณาของหน่วยงานผู้ให้ทุน", "en": "Co-design applied research projects and prepare scope, deliverables, and funding proposals with researchers and organizations. Funding decisions remain with the granting institution."}},
+      {"id": "deployment", "icon": "cloud", "title": {"th": "Enterprise\nDeployment", "en": "Enterprise\nDeployment"}, "description": {"th": "พร้อมเชื่อมต่อ ขยายผล\nและดูแลต่อเนื่อง", "en": "Connected. Scalable.\nBuilt for real operations."}, "detail": {"th": "วางแผนการนำระบบไปใช้จริง ตั้งแต่โครงสร้างพื้นฐาน การควบคุมสิทธิ์ การติดตามคุณภาพโมเดล ไปจนถึงการดูแลหลังส่งมอบ โดยกำหนดระดับบริการให้เหมาะกับแต่ละโครงการ", "en": "Plan infrastructure, access controls, model monitoring, and post-delivery support. Service levels and operating requirements are agreed for each project."}}
+    ]
+  },
+  "industries": {
+    "eyebrow": {"th": "INDUSTRIES", "en": "INDUSTRIES"},
+    "title": {"th": "แก้โจทย์จริง ในโลกธุรกิจจริง", "en": "Solving real-world challenges"},
+    "items": [
+      {"id": "manufacturing", "icon": "factory", "title": {"th": "อุตสาหกรรมการผลิต", "en": "Manufacturing"}, "description": {"th": "ยกระดับการผลิต\nด้วยข้อมูลและ AI", "en": "Smarter production.\nHigher productivity."}, "detail": {"th": "แนวทางประยุกต์ใช้: ตรวจสอบคุณภาพด้วย Computer Vision วิเคราะห์สัญญาณจากเครื่องจักร และช่วยวางแผนบำรุงรักษา เริ่มจากข้อมูลและข้อจำกัดหน้างานจริงก่อนกำหนด PoC", "en": "Potential applications include computer vision for quality inspection, machine-signal analysis, and maintenance planning. Start with operational data and constraints before defining a PoC."}, "image": "/images/manufacturing.jpg", "imageAlt": {"th": "แขนกลอุตสาหกรรมในสายการผลิต", "en": "Industrial robotic arms on an automotive production line"}, "position": "50% 45%"},
+      {"id": "logistics", "icon": "truck", "title": {"th": "โลจิสติกส์", "en": "Logistics"}, "description": {"th": "เชื่อมห่วงโซ่อุปทาน\nให้ตัดสินใจได้ดีขึ้น", "en": "Intelligent supply chains.\nA more connected world."}, "detail": {"th": "แนวทางประยุกต์ใช้: พยากรณ์ความต้องการ วางแผนทรัพยากร และวิเคราะห์เส้นทางขนส่ง โดยเปรียบเทียบกับวิธีทำงานเดิมและกำหนดตัวชี้วัดด้านต้นทุน เวลา และคุณภาพบริการ", "en": "Explore demand forecasting, resource planning, and delivery-route analysis. Compare with current operations using agreed cost, time, and service-quality measures."}, "image": "/images/logistics.jpg", "imageAlt": {"th": "รถบรรทุกขนส่งสินค้าบนถนน", "en": "Freight truck traveling along a highway"}, "position": "49% 52%"},
+      {"id": "agriculture", "icon": "sprout", "title": {"th": "เกษตรอัจฉริยะ", "en": "Smart Agriculture"}, "description": {"th": "ใช้ข้อมูลดูแลการเพาะปลูก\nเพื่ออนาคตที่ยั่งยืน", "en": "Data-driven farming.\nA sustainable future."}, "detail": {"th": "แนวทางประยุกต์ใช้: วิเคราะห์ภาพแปลงเกษตร ติดตามสุขภาพพืช และสนับสนุนการจัดการน้ำหรือปัจจัยการผลิต ประเมินผลตามสภาพพื้นที่ ฤดูกาล และข้อมูลที่มี", "en": "Analyze field imagery, monitor crop health, and support water or input management. Evaluate performance against local conditions, seasons, and available data."}, "image": "/images/agriculture.jpg", "imageAlt": {"th": "โดรนบินเหนือแปลงพืชสีเขียว", "en": "Agricultural drone flying above rows of green crops"}, "position": "50% 43%"},
+      {"id": "government", "icon": "landmark", "title": {"th": "ภาครัฐและงานวิจัย", "en": "Government & Research"}, "description": {"th": "พัฒนานวัตกรรม\nที่สร้างประโยชน์ร่วมกัน", "en": "Innovation for a more\nresilient society."}, "detail": {"th": "ร่วมพัฒนาเครื่องมือวิเคราะห์ข้อมูลและโครงการวิจัยประยุกต์สำหรับหน่วยงานภาครัฐและสถาบันวิจัย โดยกำหนดขอบเขตข้อมูล การเข้าถึง และผลส่งมอบให้ชัดเจน ภาพประกอบใช้แทนหมวดอุตสาหกรรม ไม่ใช่หน่วยงานลูกค้า", "en": "Co-develop analytical tools and applied research with public agencies and research institutions, with clear data boundaries, access controls, and deliverables. The photograph illustrates the sector; it is not a client institution."}, "image": "/images/research.jpg", "imageAlt": {"th": "อาคารรัฐสภาสหรัฐฯ ใช้เป็นภาพประกอบหมวดภาครัฐ", "en": "US Capitol building, used as an illustration of the public sector"}, "position": "50% 48%"}
+    ]
+  },
+  "process": {
+    "eyebrow": {"th": "HOW WE WORK", "en": "HOW WE WORK"},
+    "title": {"th": "เส้นทางที่ชัดเจน จากไอเดียสู่ผลลัพธ์", "en": "A clear path from idea to impact"},
+    "items": [
+      {"id": "discover", "icon": "search", "title": {"th": "Discover", "en": "Discover"}, "description": {"th": "เข้าใจโจทย์\nและโอกาสของธุรกิจ", "en": "Understand challenges\nand opportunities."}, "detail": {"th": "ทำความเข้าใจผู้ใช้งาน กระบวนการเดิม ข้อมูลที่มี และนิยามความสำเร็จร่วมกัน", "en": "Understand users, existing workflows, available data, and a shared definition of success."}},
+      {"id": "poc", "icon": "flask", "title": {"th": "PoC", "en": "PoC"}, "description": {"th": "พิสูจน์แนวคิด\nด้วยข้อมูลจริง", "en": "Validate with real data\nand rapid prototyping."}, "detail": {"th": "ทดลองในขอบเขตที่วัดผลได้ เปรียบเทียบกับวิธีเดิม และตัดสินใจร่วมกันก่อนขยายการลงทุน", "en": "Test a measurable scope, compare it with the existing approach, and decide together before scaling investment."}},
+      {"id": "build", "icon": "code", "title": {"th": "Build", "en": "Build"}, "description": {"th": "พัฒนาและปรับปรุง\nให้พร้อมใช้งาน", "en": "Develop and iterate\nfor real-world use."}, "detail": {"th": "พัฒนาโมเดล ซอฟต์แวร์ และประสบการณ์ผู้ใช้เป็นรอบสั้น ๆ พร้อมทดสอบกับบริบทจริง", "en": "Develop models, software, and user experience in short iterations, tested against real operating conditions."}},
+      {"id": "integrate", "icon": "workflow", "title": {"th": "Integrate", "en": "Integrate"}, "description": {"th": "เชื่อมกับระบบ\nและทีมของคุณ", "en": "Seamless integration\nwith existing systems."}, "detail": {"th": "เชื่อมต่อข้อมูลและระบบงานเดิม เตรียมทีมผู้ใช้งาน และกำหนดแผนส่งมอบกับการดูแลระบบ", "en": "Connect existing data and systems, prepare users, and agree on handover and operational support."}},
+      {"id": "scale", "icon": "chart", "title": {"th": "Scale", "en": "Scale"}, "description": {"th": "ติดตามผลและเติบโต\nไปพร้อมกับธุรกิจ", "en": "Drive long-term impact\nand continuous improvement."}, "detail": {"th": "ติดตามคุณภาพและผลลัพธ์หลังใช้งาน ปรับปรุงโมเดลเมื่อข้อมูลเปลี่ยน และขยายขอบเขตเมื่อมีหลักฐานรองรับ", "en": "Monitor quality and outcomes, improve models as data changes, and expand when the evidence supports it."}}
+    ]
+  },
+  "applications": {
+    "eyebrow": {"th": "POSSIBILITIES IN PRACTICE", "en": "POSSIBILITIES IN PRACTICE"},
+    "title": {"th": "เปลี่ยนศักยภาพของ AI ให้เป็นคุณค่าที่วัดได้", "en": "Designed for meaningful impact"},
+    "note": {"th": "ตัวอย่างแนวทางประยุกต์ใช้ — ผลลัพธ์และตัวชี้วัดจะกำหนดร่วมกันในแต่ละโครงการ", "en": "Illustrative applications. Outcomes and evaluation criteria are agreed for each project."},
+    "items": [
+      {"id": "vision", "icon": "scan", "sector": {"th": "MANUFACTURING", "en": "MANUFACTURING"}, "title": {"th": "AI ตรวจสอบคุณภาพ", "en": "AI for quality inspection"}, "description": {"th": "Computer Vision ในสายการผลิต", "en": "Computer vision on the production line"}, "outcomes": [{"th": "ตรวจจับ\nข้อบกพร่อง", "en": "Detect\ndefects"}, {"th": "ลดงาน\nตรวจซ้ำ", "en": "Reduce\nrework"}], "detail": {"th": "เริ่มจากรวบรวมภาพตัวอย่าง กำหนดประเภทข้อบกพร่อง และประเมินทั้งความแม่นยำกับข้อผิดพลาดที่ยอมรับได้ ก่อนทดลองเชื่อมเข้ากระบวนการตรวจสอบจริง", "en": "Start with representative imagery, define defect classes, and assess accuracy alongside acceptable error rates before piloting within the inspection workflow."}},
+      {"id": "forecast", "icon": "chart", "sector": {"th": "LOGISTICS", "en": "LOGISTICS"}, "title": {"th": "พยากรณ์ความต้องการ", "en": "Demand forecasting"}, "description": {"th": "เปลี่ยนข้อมูลย้อนหลังเป็นแผนล่วงหน้า", "en": "Turn historical data into a forward plan"}, "outcomes": [{"th": "วางแผน\nแม่นยำขึ้น", "en": "Plan with\nconfidence"}, {"th": "จัดสรร\nทรัพยากร", "en": "Allocate\nresources"}], "detail": {"th": "วิเคราะห์รูปแบบความต้องการ ฤดูกาล และข้อจำกัดการดำเนินงาน ทดสอบย้อนหลังเทียบกับวิธีเดิม แล้วกำหนดวิธีใช้ผลพยากรณ์ในการตัดสินใจของทีม", "en": "Analyze demand patterns, seasonality, and operational constraints. Backtest against the existing approach and define how forecasts support team decisions."}},
+      {"id": "precision", "icon": "sprout", "sector": {"th": "SMART AGRICULTURE", "en": "SMART AGRICULTURE"}, "title": {"th": "ข้อมูลเพื่อการเพาะปลูก", "en": "Precision farming insights"}, "description": {"th": "ติดตามแปลงและใช้ทรัพยากรอย่างเหมาะสม", "en": "Monitor fields and manage inputs thoughtfully"}, "outcomes": [{"th": "ติดตาม\nสุขภาพพืช", "en": "Monitor\ncrop health"}, {"th": "ใช้ทรัพยากร\nอย่างคุ้มค่า", "en": "Optimize\ninputs"}], "detail": {"th": "ผสานข้อมูลภาพ เซนเซอร์ หรือสภาพแวดล้อมเพื่อช่วยทีมเกษตรเห็นการเปลี่ยนแปลงในพื้นที่ และประเมินแนวทางจัดการที่เหมาะสมกับฤดูกาลและบริบทจริง", "en": "Combine imagery, sensor, or environmental data to help agricultural teams understand field changes and assess management options in their local context."}}
+    ]
+  },
+  "caseStudies": {"eyebrow": {"th": "CASE STUDIES", "en": "CASE STUDIES"}, "title": {"th": "ผลลัพธ์จริง จากความร่วมมือจริง", "en": "Real results. Lasting impact."}},
+  "why": {
+    "eyebrow": {"th": "WHY DEEPX", "en": "WHY DEEPX"},
+    "title": {"th": "มากกว่า AI คือพันธมิตรที่เข้าใจโจทย์คุณ", "en": "More than AI. A committed partner."},
+    "items": [
+      {"id": "tailored", "icon": "layers", "title": {"th": "ออกแบบเฉพาะ\nโจทย์ธุรกิจ", "en": "Tailored solutions\nfor real-world needs"}, "description": {"th": "เริ่มจากปัญหา ไม่ใช่เครื่องมือ", "en": "Start with the problem, not the tool."}, "detail": {"th": "ออกแบบขอบเขตงานให้สอดคล้องกับกระบวนการ ข้อมูล และเป้าหมายของแต่ละองค์กร", "en": "Shape each solution around the organization's workflow, data, and goals."}},
+      {"id": "validation", "icon": "target", "title": {"th": "ทดสอบคุณภาพ\nกับข้อมูลจริง", "en": "Validated models\nand clear limitations"}, "description": {"th": "วัดผลด้วยเกณฑ์ที่ตกลงร่วมกัน", "en": "Evaluate against agreed criteria."}, "detail": {"th": "แสดงทั้งประสิทธิภาพและข้อจำกัดของโมเดล เพื่อให้ตัดสินใจนำไปใช้อย่างมีข้อมูล", "en": "Make model performance and limitations visible for informed deployment decisions."}},
+      {"id": "expertise", "icon": "brain", "title": {"th": "วิจัยเชิงลึก\nร่วมกับผู้เชี่ยวชาญ", "en": "Deep research\nwith specialist expertise"}, "description": {"th": "เชื่อมความรู้กับการลงมือทำ", "en": "Connect knowledge with implementation."}, "detail": {"th": "ผสานทีมวิจัยกับทีมพัฒนาระบบ ให้ความรู้เฉพาะทางต่อยอดเป็นเครื่องมือที่ใช้ได้", "en": "Bring researchers and engineers together to turn specialist knowledge into practical tools."}},
+      {"id": "measurable", "icon": "chart", "title": {"th": "อธิบายได้\nวัดผลได้", "en": "Explainable AI\nand measurable value"}, "description": {"th": "เชื่อมตัวชี้วัดกับผลทางธุรกิจ", "en": "Connect evaluation to business value."}, "detail": {"th": "กำหนด baseline และตัวชี้วัดร่วมกัน เพื่อตรวจสอบคุณค่าก่อนตัดสินใจขยายผล", "en": "Agree on a baseline and measures to assess value before scaling."}},
+      {"id": "together", "icon": "users", "title": {"th": "ร่วมสร้าง\nและเติบโตไปด้วยกัน", "en": "Co-create\nand grow together"}, "description": {"th": "ทำงานร่วมกับทีมลูกค้าทุกระยะ", "en": "Work alongside your team at every stage."}, "detail": {"th": "ประสานงานตั้งแต่ค้นหาโจทย์ ทดลองใช้ ไปจนถึงส่งมอบและติดตามผลหลังการใช้งาน", "en": "Collaborate from discovery and pilots through handover and post-launch evaluation."}}
+    ]
+  },
+  "ecosystem": {
+    "eyebrow": {"th": "RESEARCH, GRANTS & ECOSYSTEM", "en": "RESEARCH, GRANTS & ECOSYSTEM"},
+    "title": {"th": "เชื่อมความร่วมมือ เพื่ออนาคตที่ดีกว่า", "en": "Collaborating for a brighter tomorrow"},
+    "description": {"th": "เปิดรับความร่วมมือระหว่างงานวิจัย เทคโนโลยี และภาคธุรกิจ", "en": "Open to collaboration across research, technology, and business."},
+    "items": [
+      {"id": "academia", "icon": "graduation", "title": {"th": "นักวิจัยและมหาวิทยาลัย", "en": "Researchers & universities"}, "description": {"th": "ความเชี่ยวชาญเฉพาะทาง", "en": "Specialist knowledge"}, "detail": {"th": "ร่วมออกแบบงานวิจัยและพัฒนาโมเดลแบบ project-based พร้อมกำหนดสิทธิ์ในผลงานและบทบาทให้ชัดเจน", "en": "Co-design project-based research and models, with clearly agreed roles and intellectual property terms."}},
+      {"id": "funding", "icon": "flask", "title": {"th": "หน่วยงานสนับสนุนนวัตกรรม", "en": "Innovation & funding"}, "description": {"th": "เชื่อมโอกาสการวิจัย", "en": "Enable applied research"}, "detail": {"th": "เชื่อมโจทย์วิจัยกับโอกาสทุนและโครงการสนับสนุนที่เหมาะสม โดยยึดเกณฑ์ของแต่ละหน่วยงาน", "en": "Connect research challenges to suitable grants and support programs, following each institution's criteria."}},
+      {"id": "infrastructure", "icon": "cloud", "title": {"th": "Cloud และเทคโนโลยี", "en": "Cloud & technology"}, "description": {"th": "โครงสร้างพื้นฐานที่เหมาะกับงาน", "en": "Infrastructure that fits"}, "detail": {"th": "เลือกเครื่องมือและโครงสร้างพื้นฐานให้เหมาะกับข้อมูล ข้อกำหนดองค์กร และขนาดการใช้งาน", "en": "Select tools and infrastructure for the data, organizational requirements, and operating scale."}},
+      {"id": "enterprise", "icon": "building", "title": {"th": "องค์กรและภาคธุรกิจ", "en": "Enterprise collaborators"}, "description": {"th": "ร่วมสร้างจากโจทย์จริง", "en": "Co-create from real challenges"}, "detail": {"th": "ทำงานร่วมกับผู้ใช้งานและทีมธุรกิจตั้งแต่ PoC เพื่อให้โซลูชันตอบโจทย์การทำงานจริง", "en": "Work with users and business teams from the PoC stage so the solution serves real operational needs."}}
+    ]
+  },
+  "partners": {"eyebrow": {"th": "OUR PARTNERS", "en": "OUR PARTNERS"}, "title": {"th": "เครือข่ายความร่วมมือของเรา", "en": "Our collaboration network"}},
+  "contact": {
+    "eyebrow": {"th": "LET’S BUILD WHAT’S NEXT", "en": "LET’S BUILD WHAT’S NEXT"},
+    "title": {"th": "อนาคตที่ดีกว่า", "en": "Let's build a smarter"},
+    "accent": {"th": "เริ่มจากการร่วมมือกัน", "en": "tomorrow, together."},
+    "body": {"th": "เปลี่ยนโจทย์ที่ท้าทายที่สุดของคุณ\nให้เป็นโอกาสสร้างผลลัพธ์จริงกับ DeepX", "en": "Turn your most complex challenges into\nreal-world impact with DeepX."},
+    "note": {"th": "เล่าโจทย์ธุรกิจ ข้อมูลที่มี และสิ่งที่อยากเปลี่ยนให้เราฟัง", "en": "Tell us about your challenge, available data, and what you want to change."}
+  },
+  "insights": {
+    "eyebrow": {"th": "DEEPX PERSPECTIVES", "en": "DEEPX PERSPECTIVES"},
+    "title": {"th": "ก่อนเริ่มโครงการ AI", "en": "Before starting an AI project"},
+    "items": [
+      {"id": "question", "icon": "target", "title": {"th": "เริ่มจากโจทย์ที่วัดผลได้", "en": "Start with a measurable question"}, "description": {"th": "ระบุงานที่ต้องการปรับปรุง ผู้ใช้งานจริง และวิธีวัดผลเทียบกับปัจจุบัน", "en": "Define the workflow, the people using it, and how improvement will be measured."}, "detail": {"th": "ความสำเร็จของ PoC ควรเชื่อมกับการตัดสินใจทางธุรกิจ ไม่ใช่เพียงคะแนนโมเดล", "en": "A successful PoC should inform a business decision, not only produce a model score."}},
+      {"id": "readiness", "icon": "layers", "title": {"th": "เข้าใจความพร้อมของข้อมูล", "en": "Understand your data readiness"}, "description": {"th": "ทบทวนคุณภาพ ปริมาณ สิทธิ์การใช้ และความเป็นตัวแทนของข้อมูล", "en": "Review data quality, volume, usage rights, and representativeness."}, "detail": {"th": "ข้อมูลที่ใช้ทดลองควรสะท้อนบริบทที่จะนำระบบไปใช้งาน และแยกข้อมูลทดสอบอย่างเหมาะสม", "en": "Pilot data should reflect the deployment context, with an appropriate independent test set."}}
+    ]
+  },
+  "privacy": {
+    "eyebrow": {"th": "PRIVACY", "en": "PRIVACY"},
+    "title": {"th": "ความเป็นส่วนตัวบนเว็บไซต์", "en": "Website privacy"},
+    "body": {"th": "เว็บไซต์นี้จดจำภาษาที่คุณเลือกไว้ในเบราว์เซอร์ โดยไม่มีแบบฟอร์มสมัครสมาชิกหรือระบบวิเคราะห์ผู้เข้าชมที่ติดตั้งเพิ่มเติม ข้อมูลหน้าเว็บอ่านจาก Supabase และโฮสต์บน Vercel ซึ่งอาจบันทึกข้อมูลทางเทคนิคเพื่อให้บริการและรักษาความปลอดภัย เมื่อคุณกดอีเมล LINE หรือ LinkedIn จะเปิดบริการภายนอกที่มีนโยบายความเป็นส่วนตัวของตนเอง โปรดไม่ส่งข้อมูลลับผ่านช่องทางติดต่อเบื้องต้น หากต้องการสอบถามเกี่ยวกับข้อมูลส่วนบุคคล สามารถติดต่อผ่านอีเมลของ DeepX ที่แสดงบนเว็บไซต์", "en": "This website stores your language preference in your browser. It has no signup form or additional visitor analytics. Page content is served from Supabase and the site is hosted on Vercel; these providers may process technical logs to operate and secure their services. Email, LINE, and LinkedIn links open external services with their own privacy policies. Please avoid sending confidential data through an initial inquiry. For privacy questions, use the DeepX email displayed on this website."}
+  },
+  "ui": {
+    "consultation": {"th": "ปรึกษาโครงการกับเรา", "en": "Book a consultation"}, "capabilities": {"th": "สำรวจความเชี่ยวชาญ", "en": "View capabilities"},
+    "learnMore": {"th": "ดูรายละเอียด", "en": "Learn more"}, "explore": {"th": "ค้นหาโอกาสร่วมกัน", "en": "Explore the possibilities"}, "viewAll": {"th": "ดูทั้งหมด", "en": "View all"},
+    "menu": {"th": "เปิดเมนู", "en": "Open menu"}, "close": {"th": "ปิด", "en": "Close"}, "next": {"th": "ถัดไป", "en": "Next"}, "previous": {"th": "ก่อนหน้า", "en": "Previous"}, "slide": {"th": "ดูรายการที่", "en": "Show item"},
+    "scroll": {"th": "เลื่อนเพื่อสำรวจ", "en": "Scroll to explore"}, "contact": {"th": "พูดคุยกับทีม", "en": "Talk to our team"}, "email": {"th": "ส่งอีเมล", "en": "Email us"}, "line": {"th": "คุยผ่าน LINE", "en": "Chat on LINE"},
+    "privacy": {"th": "ความเป็นส่วนตัว", "en": "Privacy"}, "insights": {"th": "มุมมองของเรา", "en": "Insights"}, "back": {"th": "กลับไปดูหน้าเว็บ", "en": "Back to the website"},
+    "details": {"th": "สิ่งที่เราทำร่วมกันได้", "en": "What we can explore together"}, "skip": {"th": "ข้ามไปเนื้อหาหลัก", "en": "Skip to main content"}, "language": {"th": "เลือกภาษา", "en": "Choose language"},
+    "ready": {"th": "พร้อมเริ่มต้นไปด้วยกัน?", "en": "Ready to build what's next?"}, "linkedin": {"th": "ติดตามบน LinkedIn", "en": "Follow on LinkedIn"}, "website": {"th": "เว็บไซต์ทางการ", "en": "Official website"}
+  }
+}
