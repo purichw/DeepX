@@ -107,7 +107,9 @@ or delete the old object. Industry alt text and focal position belong to that us
 Full asset search, deletion, private storage and shared rights metadata are deferred.
 
 `hero.videoUrl` and `hero.videoPoster` are optional, independently clearable CMS
-fields. `HeroMedia` contains the full 16:9 video, muted and looping; it pauses
+fields. `HeroMedia` fills the entire hero background with `object-fit: cover`,
+so the visible crop follows the banner aspect ratio. A dark gradient preserves
+text contrast. Playback is automatic, muted and looping without controls; it pauses
 offscreen or in hidden tabs. Reduced motion shows the poster/static fallback,
 and absent video restores the original Neural X and its CMS caption. The renderer
 uses one video URL at all viewport sizes; the prepared mobile rendition is an

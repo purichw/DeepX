@@ -283,8 +283,15 @@ export function Website({ data }: { data: SiteData }) {
         </div>
       </header>
       <main id="main">
-        <section className="hero" id="home">
+        <section className={`hero${c.hero.videoUrl ? " hero--video" : ""}`} id="home">
           <div className="hero-atmosphere" aria-hidden="true" />
+          {c.hero.videoUrl && (
+            <HeroMedia
+              videoUrl={c.hero.videoUrl}
+              posterUrl={c.hero.videoPoster}
+              caption={t(c.hero.visualCaption)}
+            />
+          )}
           <div className="container hero-grid">
             <div className="hero-copy">
               <p className="eyebrow">{t(c.hero.eyebrow)}</p>
@@ -302,11 +309,9 @@ export function Website({ data }: { data: SiteData }) {
                 </Button>
               </div>
             </div>
-            <HeroMedia
-              videoUrl={c.hero.videoUrl}
-              posterUrl={c.hero.videoPoster}
-              caption={t(c.hero.visualCaption)}
-            />
+            {!c.hero.videoUrl && (
+              <HeroMedia caption={t(c.hero.visualCaption)} />
+            )}
             <div className="expertise-strip">
               <p>{t(c.hero.trustLabel)}</p>
               <div>
