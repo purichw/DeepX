@@ -2,7 +2,28 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Current state — production deployed
+## Latest update — full-banner hero video
+
+Source `a0b92a0a1d0d98c549e9a9ab46907cd95764f2cd` is pushed and deployed to
+[deepxtech.vercel.app](https://deepxtech.vercel.app). Deployment
+`dpl_FP8shW1XB1gFUdPBRNWt98fyDFYe` is **READY**, target production, with immutable
+URL [deepx-q2ryw4bek-purich-w.vercel.app](https://deepx-q2ryw4bek-purich-w.vercel.app).
+The video now covers the whole banner behind the text and actions. Responsive
+cropping and a dark gradient replace the separate 16:9 panel. CMS fields and
+playback logic remain unchanged; there is no database migration or content write.
+
+TypeScript/production build and `git diff --check` passed. Local desktop/mobile
+visual checks and the mobile contact CTA passed. Production HTML matches the
+local build, and the new JS/CSS return HTTP 200. At 1440px and 390px the video
+matches the banner's inner bounds, plays automatically muted/looping without
+controls, and introduces no horizontal overflow; console warning/error lists
+were empty. Reviewed evidence is in ignored
+`artifacts/full-banner-{desktop,mobile}-production.png` and
+`artifacts/full-banner-production-smoke.json`. Unchanged database/auth flows,
+other routes, physical devices and reduced-motion OS emulation were not rerun.
+The prior deployment below is the recovery baseline. No CI is configured.
+
+## Initial production release — baseline
 
 [deepxtech.vercel.app](https://deepxtech.vercel.app) is served by Vercel deployment
 `dpl_DneBLyfVMuuT8PQidKvz4RrjUimB`, status **READY**, from pushed source
