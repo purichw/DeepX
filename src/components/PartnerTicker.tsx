@@ -1,29 +1,25 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { Pause, Play } from "lucide-react";
-import type { Locale, SiteData } from "../content";
+import type { SiteData } from "../content";
 import { Rail } from "./Rail";
 
 export function PartnerTicker({
   partners,
   label,
-  locale,
   previous,
   next,
   slide,
 }: {
   partners: SiteData["partners"];
   label: string;
-  locale: Locale;
   previous: string;
   next: string;
   slide: string;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const sequence = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(true);
   const [viewportWidth, setViewportWidth] = useState(0);
-  const [duration, setDuration] = useState(60);
+  const [duration, setDuration] = useState(40);
   const [mobile, setMobile] = useState(
     () => matchMedia("(max-width: 640px)").matches,
   );
@@ -41,8 +37,8 @@ export function PartnerTicker({
     if (!frame || !group) return;
     const resize = new ResizeObserver(() => {
       setViewportWidth(frame.clientWidth);
-      // A constant 22px/s keeps the pace calm as CMS items or viewport change.
-      setDuration(group.getBoundingClientRect().width / 22);
+      // Keep a steady pace as CMS items or viewport change.
+      setDuration(group.getBoundingClientRect().width / 32);
     });
     resize.observe(frame);
     resize.observe(group);
@@ -63,14 +59,6 @@ export function PartnerTicker({
 
   if (!partners.length) return null;
   const moving = partners.length > 1;
-  // These are operational control labels, not editable partner/business content.
-  const controlLabel = paused
-    ? locale === "th"
-      ? "เล่นโลโก้ต่อ"
-      : "Resume logo animation"
-    : locale === "th"
-      ? "หยุดโลโก้ชั่วคราว"
-      : "Pause logo animation";
   const logos = (duplicate = false) =>
     partners.map((partner) => (
       <a
@@ -108,7 +96,7 @@ export function PartnerTicker({
   return (
     <div
       className={`partner-strip partner-ticker ${moving ? "is-animated" : ""}`}
-      data-paused={paused || !visible}
+      data-paused={!visible}
       style={
         {
           "--ticker-viewport": `${viewportWidth}px`,
@@ -116,22 +104,6 @@ export function PartnerTicker({
         } as CSSProperties
       }
     >
-      {moving && (
-        <button
-          className="icon-button partner-ticker-toggle"
-          type="button"
-          aria-label={controlLabel}
-          title={controlLabel}
-          aria-pressed={paused}
-          onClick={() => setPaused((value) => !value)}
-        >
-          {paused ? (
-            <Play size={16} aria-hidden="true" />
-          ) : (
-            <Pause size={16} aria-hidden="true" />
-          )}
-        </button>
-      )}
       <div
         ref={viewport}
         className="partner-ticker-viewport"

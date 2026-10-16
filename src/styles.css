@@ -967,22 +967,7 @@ h1 span {
   gap: 18px;
 }
 .partner-ticker {
-  position: relative;
-  padding-top: 42px;
   --ticker-gap: 32px;
-}
-.partner-ticker:not(.is-animated) {
-  padding-top: 0;
-}
-.partner-ticker-toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 44px;
-  height: 40px;
-  border: 1px solid #17455a;
-  border-radius: 6px;
-  color: #91b9cc;
 }
 .partner-ticker-viewport {
   overflow: hidden;
@@ -1070,10 +1055,6 @@ h1 span {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .partner-ticker {
-    padding-top: 0;
-  }
-  .partner-ticker-toggle,
   .partner-ticker-copy {
     display: none;
   }

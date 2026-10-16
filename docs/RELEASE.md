@@ -2,7 +2,19 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Latest release — compact mobile hero and mobile-only ecosystem ticker
+## Mobile ticker speed and controls — release candidate
+
+Mobile ticker speed increases from 22 to 32px/s (38.5s per current eight-logo
+sequence). The owner requested removal of Play/Pause, so the control and its
+42px reserved space are removed. Hover, keyboard/static and reduced-motion
+behavior remain. Desktop/tablet still use the unchanged Rail renderer and grid.
+
+Build/types and diff checks passed. Local 390px verification: 38.5s duration for
+a 1232px sequence (32px/s), zero ticker buttons, no reserved control padding,
+no horizontal overflow and no console warnings/errors. The 1280px partner markup
+matches the preceding desktop baseline exactly and renders no ticker.
+
+## Previous release — compact mobile hero and mobile-only ecosystem ticker
 
 Source `ebf33e3` is pushed to `main` and deployed at `https://deepxsolution.com`.
 Production deployment `dpl_FVsMEttPFSWHTGYHaZqGiMEwqqsj`

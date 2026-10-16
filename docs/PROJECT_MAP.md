@@ -124,13 +124,12 @@ optional editorial choice, not an automatically selected source.
 
 On mobile (up to 640px), the ecosystem uses `PartnerTicker` with the published
 partner order, names, URLs and light/dark surfaces. Desktop/tablet retain the
-existing `Rail` renderer and original grid. Mobile moves left-to-right at 22px/s; duration is measured
+existing `Rail` renderer and original grid. Mobile moves left-to-right at 32px/s; duration is measured
 from one complete logo sequence. A duplicate visual sequence is hidden from
-assistive technology and the tab order. Pointer hover and the pause control stop
-motion. Keyboard focus exposes a single stable, horizontally scrollable set of
+assistive technology and the tab order. The owner requested no visible playback
+control. Pointer hover stops motion. Keyboard focus exposes a single stable, horizontally scrollable set of
 links; reduced motion shows a wrapping static set. Offscreen/hidden tabs pause.
-Pause/resume accessibility labels are bilingual operational control strings;
-partner content and the region label remain CMS-owned.
+Partner content and the region label remain CMS-owned.
 
 ## Routes and interactions
 
