@@ -9,7 +9,8 @@
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc -b",
     "test:content": "node --experimental-strip-types --test tests/content.test.ts",
-    "test": "node --experimental-strip-types --test tests/content.test.ts src/cms/model.test.ts",
+    "test:seo": "node --experimental-strip-types --test tests/seo.test.ts",
+    "test": "node --experimental-strip-types --test tests/content.test.ts tests/seo.test.ts src/cms/model.test.ts",
     "check:schema": "node scripts/check-cms-schema.mjs"
   },
   "engines": {

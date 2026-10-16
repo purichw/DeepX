@@ -12,6 +12,7 @@
 - [คู่มือ CMS](docs/CMS.md) — เข้าใช้งาน `/admin`, แก้เนื้อหาไทย–อังกฤษ, บันทึกร่าง และเผยแพร่
 - [Release runbook](docs/RELEASE.md) — การเชื่อม Supabase/Vercel, verification และสถานะล่าสุด
 - [Asset sources](docs/ASSETS.md) — ภาพอ้างอิงและสิทธิ์ภาพประกอบ
+- [SEO และ Google Search Console](docs/SEO.md) — metadata จาก CMS, sitemap, canonical และการส่งเว็บเข้า Google
 
 ## Development
 

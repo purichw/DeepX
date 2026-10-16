@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import { readFile } from "node:fs/promises";
+import { escapeHtml, seoHead } from "./scripts/seo.ts";
 
 export default defineConfig(({ command, mode }) => {
   const env = { ...loadEnv(mode, process.cwd(), ""), ...process.env };
@@ -44,28 +45,13 @@ export default defineConfig(({ command, mode }) => {
           const data = siteSchema.parse(await response.json());
           const site = data.content.site;
           const locale = site.defaultLocale;
-          const escape = (text: string) =>
-            text
-              .replaceAll("&", "&amp;")
-              .replaceAll("<", "&lt;")
-              .replaceAll(">", "&gt;")
-              .replaceAll('"', "&quot;");
           return html
+            .replace('<html lang="th">', `<html lang="${locale}">`)
             .replace(
               "<title>Loading</title>",
-              `<title>${escape(site.title[locale])}</title>`,
+              `<title>${escapeHtml(site.title[locale])}</title>`,
             )
-            .replace(
-              "</head>",
-              [
-                `<meta name="description" content="${escape(site.description[locale])}" />`,
-                `<meta property="og:title" content="${escape(site.title[locale])}" />`,
-                `<meta property="og:description" content="${escape(site.description[locale])}" />`,
-                `<meta property="og:type" content="website" />`,
-                `<meta property="og:locale" content="${locale === "th" ? "th_TH" : "en_US"}" />`,
-                "</head>",
-              ].join("\n"),
-            );
+            .replace("</head>", `${seoHead(data)}\n</head>`);
         },
       },
     ],

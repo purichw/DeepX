@@ -135,6 +135,12 @@ Published Supabase records เป็นแหล่งจริงของห�
 ถูกสร้างตอน build การแก้ SEO ใน CMS จึงต้อง build/deploy ใหม่เพื่อให้ crawler ที่อ่าน HTML
 ได้ค่าใหม่ ไม่มีการสั่ง deploy อัตโนมัติจากปุ่มเผยแพร่ และหน้าเว็บที่เปิดค้างไม่อัปเดตแบบ realtime
 
+SEO ใช้ชื่อแบรนด์, title/description, อีเมลและ LinkedIn จากหมวดเว็บไซต์เพื่อสร้าง
+Open Graph/Twitter และข้อมูล `Organization`/`WebSite`; ภาพ social ใช้ภาพปก Hero
+ที่ตั้งไว้ การล้างภาพปก/อีเมล/LinkedIn จะไม่เติมค่าเก่ากลับ Canonical, sitemap และ
+Google verification เป็นการตั้งค่าระบบ แยกจากลิงก์เว็บไซต์ในช่องทางติดต่อ
+ดูรายละเอียดและขั้นตอน Search Console ใน [SEO.md](SEO.md)
+
 ## สิ่งที่นำมาจากแนวทาง Mongkol Wela
 
 นำหลัก owner เดียวต่อฟิลด์, save/reopen/public read-back, การล้างค่าที่ไม่ฟื้น seed,

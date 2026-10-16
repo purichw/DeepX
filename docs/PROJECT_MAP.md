@@ -41,6 +41,8 @@ allowlist. No service key, database password or management token reaches the bro
 | `public/videos/` | Optimized owner-supplied MP4 renditions; provenance in `docs/ASSETS.md` |
 | `public/favicon.svg` | Vector brand adaptation from supplied reference |
 | `vite.config.ts` | Build-time CMS metadata and explicitly local-only fixture middleware |
+| `scripts/seo.ts`, `tests/seo.test.ts` | CMS-derived social/structured metadata, canonical identity and SEO safety checks |
+| `public/robots.txt`, `public/sitemap.xml`, `docs/SEO.md` | Crawler discovery and Search Console workflow; `/admin` noindex comes from Vercel headers |
 | `supabase/migrations/` | Append-only database schema/policy/editorial initialization |
 | `supabase/content/initial-content.json` | Historical initial editorial data and local review fixture |
 | `supabase/tests/` | Transactional public/CMS access and publication checks; requires a trusted connection |
