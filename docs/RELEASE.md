@@ -2,7 +2,21 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Latest release — SUT ecosystem and uncropped mobile hero
+## Mobile banner background correction — release candidate
+
+The mobile video remains an absolute background inside the hero banner, with an
+uncropped, full-width 16:9 image toward the bottom. Gradient masking blends its
+edges into the banner; copy spacing keeps the animated logo clear. This replaces
+the separate panel from the preceding release. Desktop/tablet styling, CMS media
+references, published content and automatic playback are unchanged.
+
+TypeScript/production build and diff checks passed. Local 390px Thai and 320px
+English checks confirmed full-width contained video with no horizontal overflow.
+The 320px capture shows the entire animated logo and DeepX wordmark inside the
+banner. Auth/CMS regression suites were not repeated for this CSS-only correction.
+Production verification is recorded after promotion below.
+
+## Previous release — SUT ecosystem and uncropped mobile hero
 
 Source `fa03002` includes the SUT layout change from `e1a60d1` and is deployed
 to `https://deepxsolution.com` as production deployment
