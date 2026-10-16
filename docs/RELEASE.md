@@ -16,7 +16,47 @@ push-only action; do not enable deployment automation without explicit approval.
 An explicit instruction for the current round does not need repeat confirmation.
 The runbook commands and historical releases below do not grant authorization.
 
-## Latest release — Google discovery and CMS-driven SEO
+## Latest release — compact Content Studio forms
+
+Source `e0527c6` is pushed to `main` and deployed to
+`https://deepxsolution.com`. Production deployment
+`dpl_DRpjTJVJM9N9A6Q1dJm9kKBSf9zF`
+(`deepx-5uc88vjsm-purich-w.vercel.app`) is Ready with the production aliases.
+The owner explicitly authorized push and deployment for this round. The standing
+requirement for fresh authorization on later rounds remains in effect.
+
+Shared CMS fields now use labels beside controls when the editor is wide enough,
+compact spacing, textareas that grow with their contents, and media previews beside
+their controls. Narrow editors stack labels above controls and retain mobile touch
+targets. The change covers all 16 editor sections and nested records. Public-site
+layout, CMS content, schema, persistence and authorization contracts are unchanged.
+
+Local authenticated Chrome verification covered all 16 sections, shared control
+variants, Thai/English switching, textarea growth, dirty/clean transitions and
+390px responsive layout. Unsaved test changes were discarded by reloading the server
+draft; no business content was saved or published. All 12 tests, typecheck/build
+and diff checks passed. Evidence: `artifacts/cms-compact-qa.md` and its captures.
+
+Preview `dpl_Bm2Aj3o54khWcoLsVJYZkopGKjWz` was Ready and its app HTML and CMS assets
+matched the local build (the public preview adds Vercel's feedback script).
+Vercel CLI promotion of this Preview-target deployment required a fresh build
+using Production environment settings; it created the production deployment above.
+Production `/`, `/admin`, main JS, public CSS and CMS JS/CSS all return 200 and
+match the local build byte-for-byte. `/admin` retains `noindex, nofollow`.
+The legacy Vercel and www domains return 308 to the canonical host with path/query
+preserved. The live public page and CMS login screen render without console
+warnings/errors. No GitHub Actions workflow is configured; validation used local
+checks and the Vercel build, not CI.
+
+Ignored release evidence: `artifacts/cms-release-preview-checks.json`,
+`cms-release-production-checks.json`, `cms-release-production-login.png` and
+`cms-release-production-public.png`. Authenticated editor interaction was verified
+locally; production login submission, save/publish/upload mutations and physical
+Safari/iOS testing were not repeated for this presentation-only release.
+Recovery baseline: `dpl_96YCZbmae4zKjidP9TeNssZRZkiq` (source `9a665aa`).
+This closeout is documentation-only and requires no additional deployment.
+
+## Previous release — Google discovery and CMS-driven SEO
 
 Source `9a665aa` is pushed and deployed to `https://deepxsolution.com`.
 Deployment `dpl_96YCZbmae4zKjidP9TeNssZRZkiq`
