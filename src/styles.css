@@ -440,6 +440,9 @@ h1 span {
 .hero--video .hero-copy {
   grid-column: 1;
 }
+.hero--video .hero-grid {
+  position: static;
+}
 .hero--video .hero-atmosphere {
   display: none;
 }
@@ -2219,18 +2222,32 @@ h1 span {
     height: 16px;
   }
   .hero--video .hero-grid {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 640px;
+    min-height: 0;
   }
   .hero--video .hero-copy {
     align-self: stretch;
   }
+  .hero--video .hero-visual--video {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    margin: 24px 0 0;
+  }
+  .hero--video .hero-media-frame {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .hero--video .hero-media-frame > video,
+  .hero--video .hero-media-poster {
+    object-fit: contain;
+  }
   .hero-visual--video::after {
-    background:
-      linear-gradient(90deg, #00121e99, #00121e33),
-      linear-gradient(180deg, #00121edb 0%, #00121e80 50%, #00121ef5 100%);
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

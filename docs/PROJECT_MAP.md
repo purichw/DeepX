@@ -107,9 +107,11 @@ or delete the old object. Industry alt text and focal position belong to that us
 Full asset search, deletion, private storage and shared rights metadata are deferred.
 
 `hero.videoUrl` and `hero.videoPoster` are optional, independently clearable CMS
-fields. `HeroMedia` fills the entire hero background with `object-fit: cover`,
-so the visible crop follows the banner aspect ratio. A dark gradient preserves
-text contrast. Playback is automatic, muted and looping without controls; it pauses
+fields. `HeroMedia` fills the desktop/tablet hero background with `object-fit: cover`.
+At widths up to 600px, the same media instance is an uncropped 16:9 panel below
+the copy/actions, using `object-fit: contain` with no dark overlay over the logo.
+Desktop background gradients preserve text contrast. Playback is automatic,
+muted and looping without controls; it pauses
 offscreen or in hidden tabs. Reduced motion shows the poster/static fallback,
 and absent video restores the original Neural X and its CMS caption. The renderer
 uses one video URL at all viewport sizes; the prepared mobile rendition is an

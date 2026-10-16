@@ -285,13 +285,6 @@ export function Website({ data }: { data: SiteData }) {
       <main id="main">
         <section className={`hero${c.hero.videoUrl ? " hero--video" : ""}`} id="home">
           <div className="hero-atmosphere" aria-hidden="true" />
-          {c.hero.videoUrl && (
-            <HeroMedia
-              videoUrl={c.hero.videoUrl}
-              posterUrl={c.hero.videoPoster}
-              caption={t(c.hero.visualCaption)}
-            />
-          )}
           <div className="container hero-grid">
             <div className="hero-copy">
               <p className="eyebrow">{t(c.hero.eyebrow)}</p>
@@ -309,9 +302,11 @@ export function Website({ data }: { data: SiteData }) {
                 </Button>
               </div>
             </div>
-            {!c.hero.videoUrl && (
-              <HeroMedia caption={t(c.hero.visualCaption)} />
-            )}
+            <HeroMedia
+              videoUrl={c.hero.videoUrl}
+              posterUrl={c.hero.videoPoster}
+              caption={t(c.hero.visualCaption)}
+            />
             <div className="expertise-strip">
               <p>{t(c.hero.trustLabel)}</p>
               <div>
