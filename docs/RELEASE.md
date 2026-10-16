@@ -2,7 +2,11 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Compact mobile hero and ecosystem ticker — release candidate
+## Latest release — compact mobile hero and mobile-only ecosystem ticker
+
+Source `ebf33e3` is pushed to `main` and deployed at `https://deepxsolution.com`.
+Production deployment `dpl_FVsMEttPFSWHTGYHaZqGiMEwqqsj`
+(`deepx-i7t41xj11-purich-w.vercel.app`) is Ready with the production aliases.
 
 The mobile hero no longer has a forced 640px minimum height. Its action-to-expertise
 gap is 33px (390px Thai hero: approximately 519px tall), removing the empty band
@@ -21,7 +25,20 @@ Local build/types and diff checks passed. Local 390px hero and mobile ticker
 renders were inspected; pause freezes position, resume restarts motion, and Tab
 reaches all eight original links through Google Cloud with no duplicate tab stops
 or page overflow. All 16 rendered image instances decoded after entering view.
-Final candidate and production verification follow below. No CMS data/auth changes.
+Production HTML matches the local build. At 390 × 844 the hero is 518.83px tall,
+the gap is 33px, and the video is decoded/playing without horizontal overflow.
+The ticker moved +474.84px over 21.674s (approximately 22px/s, left-to-right),
+and its live pause/resume controls passed. Hover pause and 7px focus-outline
+clearance were verified locally. Console warning/error logs were empty.
+
+At 1280px, production partner HTML, all logo widths and hero height exactly match
+the pre-release production baseline; no ticker is rendered on desktop. Evidence:
+`artifacts/mobile-hero-compact-production.png`,
+`artifacts/ecosystem-ticker-mobile-production.png` and
+`artifacts/mobile-ticker-verification.json` (ignored). Physical iOS/Safari and
+OS reduced-motion emulation were not exercised; the static reduced-motion path
+was source-reviewed. CMS/auth suites were not repeated because their contracts
+and data were unchanged. The preceding deployment is the recovery baseline.
 
 ## Previous release — mobile banner crop refinement
 
