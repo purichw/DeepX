@@ -2,6 +2,41 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
+## Latest release — SUT ecosystem and uncropped mobile hero
+
+Source `fa03002` includes the SUT layout change from `e1a60d1` and is deployed
+to `https://deepxsolution.com` as production deployment
+`dpl_3UCKydikZU8CLmkzeWnqegYYXCHZ`
+(`deepx-gk2bqb38g-purich-w.vercel.app`).
+
+The owner-supplied SUT PNG was uploaded unchanged through the authenticated CMS.
+Draft revision 6 was saved and reopened while public content stayed at revision 5,
+then published. Public read-back proves SUT is first, Chula second, and all other
+content and seven existing partners remain unchanged. The logo URL returns 200
+and its bytes match the supplied file. Provenance is in `ASSETS.md`.
+The desktop logo grid now fits available space instead of fixing seven columns;
+tablet four-column and mobile swipe layouts retain their existing behavior.
+
+At widths up to 600px, the hero video uses a separate uncropped 16:9 panel below
+copy/actions, preserving the whole animated DeepX mark. Desktop/tablet still use
+the full-banner background. CMS media references and playback behavior are unchanged.
+
+TypeScript/production build and diff checks passed. Local 390px Thai, 320px
+English/contact-dialog and 1280px desktop checks passed without horizontal overflow.
+Production HTML matches the local build. Production 390px video has a 350 × 196.875
+frame, `object-fit: contain`, 24px gap after the copy/actions, readyState 4, playing,
+muted and no controls. Desktop remains full-banner/cover. Console warnings/errors
+were empty. Both the old Vercel hostname and www still return 308 redirects with
+path/query preserved. SUT and the seven original logos loaded in the live browser.
+Evidence: `artifacts/sut-public-verification.json`, `sut-ecosystem-production.png`
+and `mobile-hero-contained-production.png` (ignored).
+
+Physical iOS/Safari and OS reduced-motion emulation were not run. No schema,
+permission or auth changes; their broader regression suites were not repeated.
+Recovery baseline for mobile layout is deployment
+`dpl_9zEVuDSyrMVqsT5Av3kNFbXfGBsY` (SUT grid release). CMS publication is separate
+from deployment; change logo content/order through a new CMS draft/publication.
+
 ## Current domain — deepxsolution.com
 
 The owner registered `deepxsolution.com` with Vercel. It is attached to
