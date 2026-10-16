@@ -2,7 +2,11 @@
 
 Updated: 2026-10-16 (Asia/Bangkok).
 
-## Mobile banner crop refinement — release candidate
+## Latest release — mobile banner crop refinement
+
+Source `88535ba` is pushed to `main` and deployed at `https://deepxsolution.com`.
+Production deployment `dpl_BU6T3EKY6LEeSiUgiixmnY37u9R6`
+(`deepx-n45lf3m74-purich-w.vercel.app`) is Ready with the production aliases.
 
 The mobile video is back behind the main banner copy/actions. The 16:9 frame is
 scaled to 170% width, centered horizontally at 40% of the banner height. Empty
@@ -15,6 +19,15 @@ viewport, behind the copy and above the solid CTA. Neither viewport overflows.
 At 1280px the video retains its full-banner `cover` behavior with no transform.
 Browser warning/error logs are empty. Evidence:
 `artifacts/mobile-hero-brand-crop-local.png` (ignored).
+
+Production HTML matches the local build. The 390 × 844 production capture at
+7.9 seconds shows the complete brand within the viewport, behind the banner
+copy. Video decodes to readyState 4 and plays automatically, muted and looping,
+with no controls. Browser logs are empty and the page has no horizontal overflow.
+Evidence: `artifacts/mobile-hero-brand-crop-production.png` (ignored). Physical
+iOS/Safari and reduced-motion emulation were not exercised; CMS/auth suites were
+not repeated for this CSS-only change. The preceding deployment below remains
+the recovery baseline. This verification closeout changes documentation only.
 
 ## Previous release — mobile banner background correction
 
