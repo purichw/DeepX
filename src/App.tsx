@@ -512,9 +512,6 @@ export function Website({ data }: { data: SiteData }) {
             <PartnerTicker
               partners={data.partners}
               label={t(c.partners.title)}
-              previous={t(c.ui.previous)}
-              next={t(c.ui.next)}
-              slide={t(c.ui.slide)}
             />
             <div className="ecosystem-grid">
               {c.ecosystem.items.map((item) => (

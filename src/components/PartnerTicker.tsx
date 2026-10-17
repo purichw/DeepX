@@ -1,35 +1,18 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { SiteData } from "../content";
-import { Rail } from "./Rail";
 
 export function PartnerTicker({
   partners,
   label,
-  previous,
-  next,
-  slide,
 }: {
   partners: SiteData["partners"];
   label: string;
-  previous: string;
-  next: string;
-  slide: string;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
   const sequence = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [duration, setDuration] = useState(40);
-  const [mobile, setMobile] = useState(
-    () => matchMedia("(max-width: 640px)").matches,
-  );
-
-  useEffect(() => {
-    const media = matchMedia("(max-width: 640px)");
-    const update = () => setMobile(media.matches);
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
-  }, []);
 
   useEffect(() => {
     const frame = viewport.current;
@@ -55,7 +38,7 @@ export function PartnerTicker({
       intersection.disconnect();
       document.removeEventListener("visibilitychange", updateVisibility);
     };
-  }, [partners.length, mobile]);
+  }, [partners.length]);
 
   if (!partners.length) return null;
   const moving = partners.length > 1;
@@ -77,22 +60,6 @@ export function PartnerTicker({
       </a>
     ));
 
-  // Keep the existing desktop/tablet renderer and layout exactly as before.
-  if (!mobile) {
-    return (
-      <Rail
-        kind="partner-strip"
-        name={label}
-        count={partners.length}
-        previous={previous}
-        next={next}
-        slide={slide}
-      >
-        {logos()}
-      </Rail>
-    );
-  }
-
   return (
     <div
       className={`partner-strip partner-ticker ${moving ? "is-animated" : ""}`}
@@ -100,6 +67,7 @@ export function PartnerTicker({
       style={
         {
           "--ticker-viewport": `${viewportWidth}px`,
+          "--ticker-count": partners.length,
           "--ticker-duration": `${duration}s`,
         } as CSSProperties
       }

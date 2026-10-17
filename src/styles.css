@@ -962,12 +962,8 @@ h1 span {
 .partner-strip {
   margin-block: 10px 24px;
 }
-.partner-strip .rail {
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 18px;
-}
 .partner-ticker {
-  --ticker-gap: 32px;
+  --ticker-gap: 18px;
 }
 .partner-ticker-viewport {
   overflow: hidden;
@@ -1041,9 +1037,15 @@ h1 span {
   height: auto;
   object-fit: contain;
 }
-@media (min-width: 641px) and (max-width: 1000px) {
-  .partner-strip .rail {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+@media (min-width: 641px) {
+  .partner-ticker-viewport {
+    margin-inline: -7px;
+  }
+  .partner-ticker .partner-logo {
+    width: max(
+      120px,
+      calc((var(--ticker-viewport) - 14px - (var(--ticker-count) - 1) * var(--ticker-gap)) / var(--ticker-count))
+    );
   }
 }
 @media (max-width: 640px) {

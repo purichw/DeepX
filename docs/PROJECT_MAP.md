@@ -126,9 +126,10 @@ and absent video restores the original Neural X and its CMS caption. The rendere
 uses one video URL at all viewport sizes; the prepared mobile rendition is an
 optional editorial choice, not an automatically selected source.
 
-On mobile (up to 640px), the ecosystem uses `PartnerTicker` with the published
-partner order, names, URLs and light/dark surfaces. Desktop/tablet retain the
-existing `Rail` renderer and original grid. Mobile moves left-to-right at 32px/s; duration is measured
+The ecosystem uses `PartnerTicker` at every viewport size with the published
+partner order, names, URLs and light/dark surfaces. Desktop logo cells retain
+the previous grid's sizing where they fit; narrower screens scroll the sequence.
+The ticker moves left-to-right at 32px/s; duration is measured
 from one complete logo sequence. A duplicate visual sequence is hidden from
 assistive technology and the tab order. The owner requested no visible playback
 control. Pointer hover stops motion. Keyboard focus exposes a single stable, horizontally scrollable set of
