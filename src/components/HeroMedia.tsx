@@ -42,6 +42,7 @@ function HeroVideo({
       matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   const [hasFrame, setHasFrame] = useState(false);
+  const [hasEnded, setHasEnded] = useState(false);
   const [posterFailed, setPosterFailed] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
 
@@ -54,10 +55,12 @@ function HeroVideo({
 
   useEffect(() => {
     const element = video.current;
-    if (!element || reducedMotion || videoFailed) return;
+    if (!element || reducedMotion || videoFailed || hasEnded) return;
     let visible = true;
     let disposed = false;
     const updatePlayback = () => {
+      // Scrolling back or returning to the tab must not replay a completed banner.
+      if (element.ended) return;
       if (document.hidden || !visible) {
         element.pause();
         return;
@@ -83,7 +86,7 @@ function HeroVideo({
       document.removeEventListener("visibilitychange", updatePlayback);
       element.pause();
     };
-  }, [reducedMotion, videoFailed]);
+  }, [reducedMotion, videoFailed, hasEnded]);
 
   return (
     <div className="hero-visual hero-visual--video" aria-hidden="true">
@@ -110,14 +113,14 @@ function HeroVideo({
             ref={video}
             src={videoUrl}
             poster={posterUrl || undefined}
-            autoPlay
+            autoPlay={!hasEnded}
             muted
-            loop
             playsInline
             preload="metadata"
             tabIndex={-1}
             disablePictureInPicture
             onPlaying={() => setHasFrame(true)}
+            onEnded={() => setHasEnded(true)}
             onError={() => {
               setHasFrame(false);
               setVideoFailed(true);
