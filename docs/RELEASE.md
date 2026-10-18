@@ -1,6 +1,6 @@
 # Release runbook and current state
 
-Updated: 2026-10-17 (Asia/Bangkok).
+Updated: 2026-10-18 (Asia/Bangkok).
 
 ## Authorization before push or deploy
 
@@ -15,6 +15,29 @@ promotion are also covered. Check for automatic deployment triggers before a
 push-only action; do not enable deployment automation without explicit approval.
 An explicit instruction for the current round does not need repeat confirmation.
 The runbook commands and historical releases below do not grant authorization.
+
+## Latest content publication — sector expansion, 2026-10-18
+
+The owner requested publication of the approved five-sector copy and supplied a
+Restaurant & F&B image. CMS revision **7** was saved, reopened in a fresh
+authenticated tab, previewed, and published at `https://deepxsolution.com`.
+Manufacturing, Logistics & SME Growth, and Smart Agriculture were updated in
+Thai and English; Restaurant & F&B Growth and B2B Industrial Growth were added.
+The existing Government & Research entry was preserved, giving six industry
+cards and five illustrative applications. B2B uses the existing manufacturing
+image; Restaurant uses the owner's uploaded 1448 × 1086 PNG in `cms-media`.
+
+Public read-back matches the saved draft and confirms that only `industries`
+and `applications` changed. Government & Research, partners, case studies, and
+all other content remain unchanged. Preview checks covered both languages,
+Restaurant and B2B detail dialogs, and the 390 px mobile card rail. Production
+renders the uploaded image at its natural dimensions; its URL returns HTTP 200.
+Before/draft/published JSON and the live screenshot are saved under ignored
+`artifacts/sector-content-*-2026-10-18.*`.
+
+This was a CMS publication only: no source push, build, deploy, schema change,
+or permission change. Existing metadata was not edited. Broad code/auth tests
+were not repeated for this editorial update.
 
 ## Latest release — compact Content Studio forms
 

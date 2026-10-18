@@ -22,6 +22,10 @@
   คำสั่งนี้ไม่ใช่ระบบสิทธิ์: Supabase Auth/allowlist และ RLS ยังคงเป็นตัวควบคุมสิทธิ์
 - `index.html` มี public Google verification meta tag สำหรับเจ้าของเว็บไซต์
   เก็บไว้หลังยืนยันสำเร็จ หากเปลี่ยนบัญชีเจ้าของ ให้ยืนยันวิธีใหม่ก่อนเปลี่ยนค่า
+- Favicon ประกาศใน HTML ตั้งแต่ก่อนรัน JavaScript: `/favicon.png` ขนาด 192×192
+  และ `/favicon.ico` ขนาด 16/32/48 พิกเซล ทั้งสอง export จาก `public/favicon.svg`
+  ซึ่งเป็นต้นฉบับสัญลักษณ์ DeepX เดิม ไม่เปลี่ยน URL ไฟล์บ่อย และต้องเปิดให้
+  Googlebot-Image เข้าถึงได้ การเปลี่ยนไอคอนต้อง export ทั้งสองไฟล์และ deploy
 
 ไม่มีการเปลี่ยนข้อความธุรกิจหรือหน้าตา desktop/mobile ในรอบ SEO นี้
 เว็บไซต์ยัง render เนื้อหาหลักด้วย JavaScript จาก CMS; ใช้ URL Inspection แบบ live
@@ -61,6 +65,17 @@ SEO 100/100 คือผ่าน automated audits ในหมวด SEO ขอ
 การแก้ metadata/social/JSON-LD ใน CMS ต้องเผยแพร่แล้ว rebuild/deploy ใหม่
 ปุ่มเผยแพร่ CMS ไม่ได้สั่ง deploy หรือส่งคำขอ indexing อัตโนมัติ
 ผลรอบล่าสุดอยู่ใน `docs/RELEASE.md` ไม่ถือเอกสารนี้เป็นสถานะ Google แบบ realtime
+
+## ไอคอนในผลค้นหา
+
+ผลค้นหาใช้ favicon ของ hostname ไม่ใช่ภาพ Open Graph หรือโลโก้ใน JSON-LD
+ก่อนเผยแพร่การแก้ favicon ให้ตรวจไฟล์ใน `dist/` และ `<link rel="icon">`
+หลัง deploy ตรวจว่า `/favicon.png` และ `/favicon.ico` ตอบ 200 พร้อม image MIME type
+และไม่มี `noindex` หรือ robots.txt ปิดกั้น จากนั้นขอ Request indexing ของหน้าแรก
+ผ่าน Search Console ได้ การเปลี่ยนผลค้นหาขึ้นกับรอบ crawl ของ Google ซึ่งอาจใช้
+หลายวันถึงหลายสัปดาห์ และไม่รับประกันว่าจะมีไอคอนแม้ตั้งค่าครบ
+
+อ้างอิง: [Google favicon guidelines](https://developers.google.com/search/docs/appearance/favicon-in-search).
 
 อ้างอิง: [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap),
 [JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics),

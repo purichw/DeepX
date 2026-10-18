@@ -619,11 +619,21 @@ h1 span {
   white-space: nowrap;
 }
 .rail {
-  display: grid;
-  gap: 16px;
+  --rail-gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--rail-gap);
+}
+.rail > * {
+  min-width: 0;
+  flex: 0 0
+    calc(
+      (100% - (var(--rail-columns) - 1) * var(--rail-gap)) / var(--rail-columns)
+    );
 }
 .capability-rail .rail {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  --rail-columns: 5;
 }
 .capability-card {
   position: relative;
@@ -671,7 +681,7 @@ h1 span {
   white-space: pre-line;
 }
 .industry-rail .rail {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  --rail-columns: 4;
 }
 .industry-card {
   position: relative;
@@ -817,7 +827,10 @@ h1 span {
   background: var(--bg);
   padding-inline: 2px;
 }
-.application-rail .rail,
+.application-rail .rail {
+  --rail-columns: 3;
+  --rail-gap: 18px;
+}
 .case-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1589,7 +1602,7 @@ h1 span {
     font-size: 10px;
   }
   .capability-rail .rail {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    --rail-columns: 2;
   }
   .capability-card {
     text-align: left;
@@ -1615,9 +1628,6 @@ h1 span {
     white-space: normal;
   }
   .capability-card .card-action {
-    grid-column: 1/-1;
-  }
-  .capability-card:last-child {
     grid-column: 1/-1;
   }
   .industry-card {
@@ -1856,6 +1866,8 @@ h1 span {
   }
   .rail {
     display: flex !important;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     overflow-x: auto;
     gap: 12px;
     scroll-snap-type: x mandatory;
@@ -1878,9 +1890,6 @@ h1 span {
     min-height: 235px;
     padding: 23px 13px 17px;
     gap: 0;
-  }
-  .capability-card:last-child {
-    grid-column: auto;
   }
   .capability-icon {
     margin: 0 0 17px;
