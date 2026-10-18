@@ -16,7 +16,44 @@ push-only action; do not enable deployment automation without explicit approval.
 An explicit instruction for the current round does not need repeat confirmation.
 The runbook commands and historical releases below do not grant authorization.
 
-## Latest release — centered card rows and favicon, 2026-10-18
+## Domain migration — deepxworks.com, 2026-10-18
+
+The owner requested `deepxworks.com` as the primary origin of the existing Vercel
+project, preserving the website and CMS. Domain configuration and CMS publication
+are applied. The owner explicitly authorized push and production deployment of
+the prepared metadata change on 2026-10-18. Release verification is in progress;
+the completed source/deployment identifiers and results will be recorded below.
+
+- Attached apex and `www.deepxworks.com` to project `deepx`; apex serves the same
+  existing production deployment `dpl_AXbdFZ1qtjL6YAqTt7iW1PWzeoMC` over HTTPS.
+- `deepxsolution.com`, `www.deepxsolution.com`, `deepxtech.vercel.app`, and
+  `www.deepxworks.com` now point directly to the new apex with 308 redirects.
+  Old aliases were retargeted before redirecting the old apex, as Vercel rejects
+  a redirect source which is still the destination of another domain redirect.
+  HTTP checks confirm path/query preservation on every alias. A Chrome visit
+  through the old `/admin?domain_probe=1#domain-migration-check` also preserved the
+  fragment and opened the authenticated CMS. New `/admin` remains HTTP 200 with
+  `X-Robots-Tag: noindex, nofollow`.
+- Supabase Auth Site URL is `https://deepxworks.com`; exact allowed callback
+  `https://deepxworks.com/admin` is added, preserving the four existing callbacks.
+  Settings persisted after reload. A real email-link login returned to the new
+  `/admin`, loaded the authorized workspace, and survived reload.
+- CMS revision 9 was saved, reopened and published from the new domain. Public
+  before/after comparison confirms only `content.site.website` changed, from
+  `https://deepx.tech` to `https://deepxworks.com`. Brand, email, imagery and all
+  other content remain unchanged. No credentials, roles, RLS or schema changed.
+- Local canonical, Open Graph/JSON-LD origin, robots and sitemap now use the new
+  domain. All 12 tests, schema parity and typecheck/build pass. Public JS/CSS match
+  the existing deployed files byte-for-byte. Production metadata still uses the
+  previous domain until this prepared build is deployed.
+
+Evidence: ignored `artifacts/deepxworks-*` configuration, public-content comparison,
+HTTP checks, Auth settings and CMS/public screenshots. Search Console property,
+sitemap submission and Change of Address for the new hostname have not been
+performed. No new Lighthouse run, broad UI audit, password reset, physical iOS
+test, unrelated DNS/mail change or database migration was needed for this scope.
+
+## Previous release — centered card rows and favicon, 2026-10-18
 
 The owner explicitly authorized pushing and deploying both changes. Source
 `97fc54a4452f9351d16929568468f7ed560712ef` is pushed to `main` and deployed to

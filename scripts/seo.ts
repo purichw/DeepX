@@ -1,7 +1,7 @@
 import type { SiteData } from "../src/content.ts";
 
 // Deployment identity, separate from the editable website/contact link in the CMS.
-export const canonicalUrl = "https://deepxsolution.com/";
+export const canonicalUrl = "https://deepxworks.com/";
 
 export function escapeHtml(value: string) {
   return value

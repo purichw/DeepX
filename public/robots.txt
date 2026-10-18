@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://deepxsolution.com/sitemap.xml
+Sitemap: https://deepxworks.com/sitemap.xml

@@ -2,8 +2,8 @@
 
 เว็บไซต์บริษัท Deep Tech / AI Solutions จากงานวิจัยสู่การใช้งานจริงสำหรับองค์กร
 
-เว็บไซต์: [deepxsolution.com](https://deepxsolution.com)
-· CMS: [เข้าสู่ระบบผู้ดูแล](https://deepxsolution.com/admin)
+เว็บไซต์: [deepxworks.com](https://deepxworks.com)
+· CMS: [เข้าสู่ระบบผู้ดูแล](https://deepxworks.com/admin)
 
 ## เริ่มอ่าน
 
@@ -66,8 +66,8 @@ VITE_LOCAL_CONTENT_PREVIEW=1 npm run dev
 
 - GitHub: <https://github.com/purichw/DeepX>
 - Supabase: `yazamwbukbtetzqmqcpm`
-- Production: [deepxsolution.com](https://deepxsolution.com); `www.deepxsolution.com` และ `deepxtech.vercel.app` redirect 308 มาที่โดเมนหลัก โดยคง path/query; ดูหลักฐานใน [Release runbook](docs/RELEASE.md)
-- ข้อมูลช่องทางติดต่อใน CMS แยกจากการตั้งค่าโดเมน: รอบเชื่อมโดเมนนี้ไม่ได้เปลี่ยนอีเมลหรือเนื้อหาที่เผยแพร่
+- Production หลัก: [deepxworks.com](https://deepxworks.com); โดเมนเดิม `deepxsolution.com`, `www.deepxsolution.com` และ `deepxtech.vercel.app` ต้อง redirect 308 มาที่โดเมนหลัก โดยคง path/query; สถานะการย้ายและเผยแพร่ใน [Release runbook](docs/RELEASE.md)
+- ลิงก์เว็บไซต์ทางการใน CMS แยกจาก canonical; การย้ายโดเมนไม่เปลี่ยนอีเมล บัญชีผู้ดูแล Supabase project หรือหน้าตาเว็บไซต์
 - ภาษาเริ่มต้น: ไทย; รองรับ EN และจดจำภาษาบนเบราว์เซอร์
 
 ไม่ commit `.env.local`, `.vercel`, credentials, `dist/`, หรือ artifacts การตรวจ UI

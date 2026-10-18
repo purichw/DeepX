@@ -29,13 +29,17 @@ test("SEO uses published editorial values and canonical deployment identity", ()
   assert.ok(head.includes('property="og:title" content="Edited CMS title"'));
   assert.ok(head.includes('property="og:locale" content="en_US"'));
   assert.ok(
-    head.includes('content="https://deepxsolution.com/images/poster.webp"'),
+    head.includes('content="https://deepxworks.com/images/poster.webp"'),
   );
   assert.ok(!head.includes("contact.example.com"));
   const json = head.match(
     /<script type="application\/ld\+json">(.*?)<\/script>/s,
   )![1];
   const graph = JSON.parse(json)["@graph"];
+  assert.equal(canonicalUrl, "https://deepxworks.com/");
+  assert.equal(graph[0].url, canonicalUrl);
+  assert.equal(graph[1].url, canonicalUrl);
+  assert.ok(!head.includes("https://deepxsolution.com"));
   assert.equal(graph[0].name, "CMS brand");
   assert.equal(graph[1].inLanguage, "en");
   assert.equal(graph[1].publisher["@id"], graph[0]["@id"]);

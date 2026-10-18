@@ -1,6 +1,6 @@
 # Project map
 
-Updated: 2026-10-17. Distinguish intended behavior below from verified deployment
+Updated: 2026-10-18. Distinguish intended behavior below from verified deployment
 state in [RELEASE.md](RELEASE.md).
 The Thai operator guide and complete field groups are in [CMS.md](CMS.md).
 
@@ -142,6 +142,13 @@ One page at `/`; anchors `#home`, `#capabilities`, `#industries`, `#process`,
 `#applications`, `#about`, `#ecosystem`, `#contact`. Header/footer navigation
 uses CMS links. Insights and privacy are informational dialogs, not separate routes.
 CMS is reached directly at `/admin`; it has no public member-account features.
+
+The primary origin is `https://deepxworks.com`. Canonical, Open Graph/JSON-LD,
+robots and sitemap use this deployment identity. Legacy-domain redirects live in
+Vercel project domain settings; they are not JavaScript navigation. Supabase Auth
+Site URL and exact `/admin` callback must agree with the primary origin. Auth API,
+content RPC and uploaded media stay on the existing Supabase project. CMS sign-in
+uses the current origin; sessions require a fresh login after an origin change.
 
 Dialogs use native `<dialog>` for focus containment, Escape and inert background.
 Closing restores the trigger's focus. Opening locks body scrolling. Cards open

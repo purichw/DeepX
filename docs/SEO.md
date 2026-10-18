@@ -1,6 +1,6 @@
 # SEO และ Google Search Console
 
-เว็บไซต์หลักคือ `https://deepxsolution.com/` มี public URL เดียวใน sitemap;
+เว็บไซต์หลักคือ `https://deepxworks.com/` มี public URL เดียวใน sitemap;
 เมนู `#capabilities`, `#industries` และส่วนอื่นเป็น anchor ในหน้าเดียวกัน
 ไม่ใช่หน้าแยก ห้ามเพิ่ม anchor, หน้า `/admin` หรือภาษา EN ที่ยังไม่มี URL แยกลง sitemap
 
@@ -15,7 +15,7 @@
 - Canonical เป็น deployment configuration แยกจากลิงก์ช่องทางเว็บไซต์ที่แก้ใน CMS
   หากย้ายโดเมน ต้องปรับ `scripts/seo.ts`, `public/sitemap.xml`, `public/robots.txt`,
   Vercel domains และ Supabase Auth redirects ให้ตรงกัน
-- `public/robots.txt` อนุญาต crawl และชี้ไป `https://deepxsolution.com/sitemap.xml`
+- `public/robots.txt` อนุญาต crawl และชี้ไป `https://deepxworks.com/sitemap.xml`
   ไม่ใส่ lastmod ปลอมตามเวลา build เพราะไม่ได้หมายความว่าเนื้อหาเปลี่ยนทุกครั้ง
 - Vercel ส่ง `X-Robots-Tag: noindex, nofollow` สำหรับ `/admin` และเส้นทางย่อย
   ไม่บล็อก crawl ด้วย robots.txt เพื่อให้ crawler อ่านคำสั่ง noindex ได้
@@ -44,8 +44,8 @@ git diff --check
 คะแนน SEO วัดด้วย Lighthouse โดยแยก mobile/desktop และเก็บวันที่/เวอร์ชัน/รายงาน:
 
 ```sh
-npx --yes lighthouse https://deepxsolution.com/ --only-categories=seo --chrome-flags='--headless' --output=json --output=html --output-path=artifacts/seo-mobile --quiet
-npx --yes lighthouse https://deepxsolution.com/ --only-categories=seo --preset=desktop --chrome-flags='--headless' --output=json --output=html --output-path=artifacts/seo-desktop --quiet
+npx --yes lighthouse https://deepxworks.com/ --only-categories=seo --chrome-flags='--headless' --output=json --output=html --output-path=artifacts/seo-mobile --quiet
+npx --yes lighthouse https://deepxworks.com/ --only-categories=seo --preset=desktop --chrome-flags='--headless' --output=json --output=html --output-path=artifacts/seo-desktop --quiet
 ```
 
 SEO 100/100 คือผ่าน automated audits ในหมวด SEO ของ Lighthouse เวอร์ชันที่วัด
@@ -54,9 +54,15 @@ SEO 100/100 คือผ่าน automated audits ในหมวด SEO ขอ
 
 ## ส่งเว็บเข้า Google
 
-1. เปิด Search Console ของ property `https://deepxsolution.com/` ด้วยบัญชีเจ้าของ
+หลังย้ายจาก `deepxsolution.com` ให้ใช้ property ของ `https://deepxworks.com/`
+และส่ง sitemap ใหม่ การย้าย Vercel/Supabase ไม่ได้ย้ายสถานะ Search Console อัตโนมัติ
+เก็บ property เดิมและ redirect ถาวรไว้ แล้วดำเนินการ Change of Address จาก property เดิม
+เมื่อยืนยันเจ้าของทั้งสองฝั่งและ Google ตรวจ redirect ผ่าน อย่าอ้างว่าดำเนินการแล้ว
+หากยังไม่มีผลยืนยันจาก Search Console; ดูสถานะจริงใน `docs/RELEASE.md`
+
+1. เปิด Search Console ของ property `https://deepxworks.com/` ด้วยบัญชีเจ้าของ
 2. ยืนยันผ่าน HTML meta tag ที่ Google ออกให้และเว็บ production ส่งกลับจริง
-3. ส่ง `https://deepxsolution.com/sitemap.xml` ใน Sitemaps แล้วตรวจสถานะการอ่าน
+3. ส่ง `https://deepxworks.com/sitemap.xml` ใน Sitemaps แล้วตรวจสถานะการอ่าน
 4. ตรวจ URL หน้าแรกด้วย URL Inspection และ Test live URL; ถ้าเข้าถึง/จัดทำดัชนีได้
    ให้ Request indexing แล้วบันทึกผลที่ Google ตอบกลับ
 5. แยกสถานะ verified / sitemap submitted / indexing requested / indexed ให้ชัด
