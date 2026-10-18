@@ -16,6 +16,41 @@ push-only action; do not enable deployment automation without explicit approval.
 An explicit instruction for the current round does not need repeat confirmation.
 The runbook commands and historical releases below do not grant authorization.
 
+## Latest release — centered card rows and favicon, 2026-10-18
+
+The owner explicitly authorized pushing and deploying both changes. Source
+`97fc54a4452f9351d16929568468f7ed560712ef` is pushed to `main` and deployed to
+`https://deepxsolution.com` as `dpl_AXbdFZ1qtjL6YAqTt7iW1PWzeoMC`
+(`deepx-c7bgmic6l-purich-w.vercel.app`), READY. This used the verified-local
+production path once; no separate preview or promotion was run. No GitHub Actions
+workflow is configured. Fresh authorization remains required for later releases.
+
+The shared Rail layout centers incomplete rows while preserving column widths
+and mobile horizontal scrolling. Capabilities, industries and applications share
+the rule. PNG 192×192 and ICO 16/32/48 variants of the existing favicon are linked
+in static HTML; the PNG corners are transparent. CMS content and schema were not
+changed by this release. At verification, live CMS had five industry cards and
+five applications; the six-card count below records the earlier publication.
+
+All 12 tests, CMS schema parity, typecheck/build and diff checks passed. Local
+1440/820/390px evidence covers the affected variants. Production 1440px geometry
+confirms centered 4+1 industry and 3+2 application rows with unchanged card widths;
+390px navigation reaches the last industry card without page overflow. Inspected
+screenshots and console checks pass. All five industry images decode successfully.
+
+Production HTML, main JS/CSS and both favicon files match the local build
+byte-for-byte. Favicon URLs return HTTP 200 with image MIME types and no noindex;
+the PNG decodes at 192×192 in Chrome. Public robots.txt permits crawling, `/admin`
+retains noindex, and legacy Vercel/www redirects return 308 to the canonical host.
+Google Search appearance remains asynchronous; no new Search Console indexing
+request was submitted in this release. Authenticated CMS writes, database changes,
+physical Safari/iOS, broad media audits and Lighthouse were outside this scope.
+
+Evidence: ignored `artifacts/favicon-cards-production-*` HTTP/layout records and
+desktop/mobile captures. Recovery baseline: `dpl_4b8P6vkw8NDU5NQqENTmpgXGuAyx`
+(`deepx-6onnfkg11-purich-w.vercel.app`, source `3e5daae`). This release record is
+documentation-only and does not require another deployment.
+
 ## Latest content publication — sector expansion, 2026-10-18
 
 The owner requested publication of the approved five-sector copy and supplied a
@@ -39,7 +74,7 @@ This was a CMS publication only: no source push, build, deploy, schema change,
 or permission change. Existing metadata was not edited. Broad code/auth tests
 were not repeated for this editorial update.
 
-## Latest release — compact Content Studio forms
+## Previous release — compact Content Studio forms
 
 Source `e0527c6` is pushed to `main` and deployed to
 `https://deepxsolution.com`. Production deployment
