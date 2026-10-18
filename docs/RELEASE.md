@@ -19,13 +19,16 @@ The runbook commands and historical releases below do not grant authorization.
 ## Domain migration — deepxworks.com, 2026-10-18
 
 The owner requested `deepxworks.com` as the primary origin of the existing Vercel
-project, preserving the website and CMS. Domain configuration and CMS publication
-are applied. The owner explicitly authorized push and production deployment of
-the prepared metadata change on 2026-10-18. Release verification is in progress;
-the completed source/deployment identifiers and results will be recorded below.
+project, preserving the website and CMS. The owner explicitly authorized push
+and production deployment on 2026-10-18. Source
+`9e60fbae649861151f0056661a6a79b3262d6311` is pushed to `main` and deployed as
+`dpl_DjjDZRH7HVFDoroxcqaiQ9yePdT9` (`deepx-6s5st0l6q-purich-w.vercel.app`),
+READY and aliased to `https://deepxworks.com`. Vercel metadata confirms that SHA.
+The verified-local production path ran once, without a separate preview or
+promotion. No GitHub Actions workflow or Vercel Git integration is configured.
 
-- Attached apex and `www.deepxworks.com` to project `deepx`; apex serves the same
-  existing production deployment `dpl_AXbdFZ1qtjL6YAqTt7iW1PWzeoMC` over HTTPS.
+- Attached apex and `www.deepxworks.com` to project `deepx`; apex initially served
+  the existing production deployment over HTTPS before the metadata release.
 - `deepxsolution.com`, `www.deepxsolution.com`, `deepxtech.vercel.app`, and
   `www.deepxworks.com` now point directly to the new apex with 308 redirects.
   Old aliases were retargeted before redirecting the old apex, as Vercel rejects
@@ -42,10 +45,24 @@ the completed source/deployment identifiers and results will be recorded below.
   before/after comparison confirms only `content.site.website` changed, from
   `https://deepx.tech` to `https://deepxworks.com`. Brand, email, imagery and all
   other content remain unchanged. No credentials, roles, RLS or schema changed.
-- Local canonical, Open Graph/JSON-LD origin, robots and sitemap now use the new
-  domain. All 12 tests, schema parity and typecheck/build pass. Public JS/CSS match
-  the existing deployed files byte-for-byte. Production metadata still uses the
-  previous domain until this prepared build is deployed.
+- Production canonical, Open Graph/JSON-LD origin, robots and sitemap now use the
+  new domain. All 12 tests, schema parity and typecheck/build passed before release;
+  their evidence was reused for the unchanged candidate. Vercel build passed.
+  Production HTML, robots, sitemap, favicons and public/CMS JS/CSS match the
+  checked local build byte-for-byte. Public/CMS runtime JS/CSS are unchanged from
+  the preceding deployment, preserving both interfaces exactly.
+- After deployment, HTTP checks passed for `/`, `/admin`, crawler files,
+  favicons, public/CMS assets and all four redirect aliases, including admin
+  path/query. Chrome shows the new canonical/Open Graph URL and unchanged public
+  page; the existing authenticated CMS session reloads successfully. Neither
+  page reported console warnings/errors. No additional CMS mutation was needed.
+
+Build phase completed in about 6 seconds; no retry or duplicate deployment was
+needed. Recovery baseline: `dpl_AXbdFZ1qtjL6YAqTt7iW1PWzeoMC`, source `97fc54a`.
+That artifact contains the old canonical; reverting it alone does not undo the
+Vercel redirects, Supabase URL settings or CMS revision 9. Treat those changes
+separately and do not roll back working authentication as part of a code rollback.
+This verification closeout is documentation-only and needs no extra deployment.
 
 Evidence: ignored `artifacts/deepxworks-*` configuration, public-content comparison,
 HTTP checks, Auth settings and CMS/public screenshots. Search Console property,
