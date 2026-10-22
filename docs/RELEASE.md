@@ -1,6 +1,6 @@
 # Release runbook and current state
 
-Updated: 2026-10-18 (Asia/Bangkok).
+Updated: 2026-10-22 (Asia/Bangkok).
 
 ## Authorization before push or deploy
 
@@ -15,6 +15,87 @@ promotion are also covered. Check for automatic deployment triggers before a
 push-only action; do not enable deployment automation without explicit approval.
 An explicit instruction for the current round does not need repeat confirmation.
 The runbook commands and historical releases below do not grant authorization.
+
+## Product Studio — release authorized, 2026-10-22
+
+The owner requested the software house wing at `/studio` with CMS and Google
+discovery, and approved six Concept projects. The owner explicitly authorized
+**push and deployment for this round on October 22, 2026**. Production route and
+Google indexing remain pending release verification. The prior homepage SEO score is not a
+score for Studio. See [STUDIO.md](STUDIO.md) for the route, CMS and recovery map.
+
+- Added isolated responsive Studio UI, six generated Concept illustrations,
+  filters/details, shared contacts, editable service/process/AI/footer sections,
+  optional verified metrics/reviews, and a homepage footer discovery link.
+- Applied and recorded migrations `20261021090000` and `20261021090100` to the
+  existing Supabase project through its authorized SQL editor. Additive bootstrap
+  created draft revision 11 while publication stayed at 10. No Auth, RLS, bucket,
+  admin allowlist or domain setting changed.
+- Authenticated CMS test changed the Studio hero alt text, switched between both
+  page editors without losing the working edit, saved revision 12, reloaded and
+  reopened it, previewed the shared renderer, then published revision 12.
+  Public RPC read-back confirms all six concepts and **every pre-existing page,
+  case-study and partner value is unchanged**. Publishing the content does not
+  deploy the new route or source code.
+- SQL transaction test passed unsigned/anonymous access denial, stale revision
+  rejection, old-client Studio omission rejection, duplicate-ID rejection, and
+  intentional empty media/arrays. Test changes rolled back. The same SQL test is
+  committed without an owner's email; it resolves an existing confirmed admin
+  from the private allowlist when run through a trusted connection.
+- TypeScript/production build, 18 tests and generated SQL schema parity pass.
+  The initial build exposed plugin ordering; the content plugin now runs after
+  Vite's HTML generation and builds both route documents successfully. No gate
+  was bypassed. Studio HTML has one canonical, one h1, its own metadata and valid
+  escaped JSON-LD. Sitemap lists both public routes; admin exclusion is unchanged.
+- Chromium checks at 1440/834/390 CSS pixels show all six projects and no page
+  horizontal overflow. Filter, Concept dialog, Escape/focus return, TH/EN, mobile
+  menu, footer accordion and contact destinations work. All 11 generated assets
+  load after scrolling. Mobile filters have 44px targets. No console errors.
+  Safari/iOS hardware and actual Vercel redirects are not verified locally.
+
+Evidence is ignored under `artifacts/studio/`: CMS published-state capture,
+public before/after JSON, desktop/tablet/mobile captures and generated HTML.
+Browser screenshots contain extra capture-canvas padding; review images crop it
+using observed DOM width/height, retaining the actual page pixels.
+
+Next authorized release: commit/push the reviewed source, deploy once with the
+existing runbook, verify `/studio`, `/studio/`, homepage/admin and fresh assets,
+then inspect/request indexing for `https://deepxworks.com/studio` in the existing
+Search Console property and verify the updated sitemap. Do not report a request
+as indexed until Google supplies that evidence.
+
+## Google Search Console — deepxworks.com, 2026-10-19
+
+
+The owner requested Google discoverability for the new primary domain. Google
+already had `https://deepxworks.com/` indexed when inspected: **URL is on Google**,
+**Page is indexed**, user-declared canonical `https://deepxworks.com/`, and
+Google-selected canonical **Inspected URL**. Last crawl displayed October 19,
+2026, 4:53:52 AM, by Googlebot smartphone; crawl/indexing were allowed and page
+fetch succeeded. This is evidence of existing indexing, not a result attributed
+to today's sitemap submission. No redundant Request indexing was submitted.
+
+- Verified the new URL-prefix property with the owner's Google account using an
+  apex DNS TXT record in Vercel: `rec_2ddd7da47da6910375d686e4`. Keep this Google
+  verification record. Existing Zoho verification, SPF, DKIM and MX were preserved;
+  the existing HTML verification meta tag was not changed.
+- Submitted `/sitemap.xml` once. Search Console reports **Success**, submitted and
+  last read October 19, 2026, with **1 discovered page**.
+- Submitted Change of Address from `https://deepxsolution.com/` to
+  `https://deepxworks.com/`. Both ownership and homepage redirect validation passed
+  with the existing 308 redirect. After confirming, Google reports **This site is
+  currently moving**, destination `deepxworks.com`, start date October 19, 2026.
+  The request is accepted; completion of Google's migration processing is pending.
+- Production HTTP checks pass for the homepage, canonical, robots, sitemap and
+  favicon. The public homepage has no noindex and the old apex redirects to the
+  new one. No source runtime, CMS content, UI, Auth or redirect configuration changed.
+
+Evidence: ignored `artifacts/deepxworks-gsc-http-2026-10-19.json` and
+`deepxworks-gsc-{verified,sitemap,indexed,migration}-2026-10-19.png` captures.
+This round changed Search Console and one DNS TXT record, plus local documentation;
+there was no push or deployment. Broad tests/build, Lighthouse and UI regression
+checks were not repeated because the deployed application was unchanged. Indexing
+does not guarantee a particular ranking or appearance for every search query.
 
 ## Domain migration — deepxworks.com, 2026-10-18
 
@@ -66,8 +147,9 @@ This verification closeout is documentation-only and needs no extra deployment.
 
 Evidence: ignored `artifacts/deepxworks-*` configuration, public-content comparison,
 HTTP checks, Auth settings and CMS/public screenshots. Search Console property,
-sitemap submission and Change of Address for the new hostname have not been
-performed. No new Lighthouse run, broad UI audit, password reset, physical iOS
+sitemap submission and Change of Address were not performed in this release;
+see the October 19 Search Console entry above for their subsequent completion.
+No new Lighthouse run, broad UI audit, password reset, physical iOS
 test, unrelated DNS/mail change or database migration was needed for this scope.
 
 ## Previous release — centered card rows and favicon, 2026-10-18

@@ -14,6 +14,7 @@ import type { Locale } from "../content";
 import { cmsClient } from "./client";
 import {
   iconOptions,
+  studioIconOptions,
   itemTitle,
   labels,
   newArrayItem,
@@ -42,6 +43,11 @@ const multiline = new Set([
   "footerText",
   "visualCaption",
   "outcomes",
+  "closing",
+  "focusTitle",
+  "focusBody",
+  "quote",
+  "contactNote",
 ]);
 
 // Keep one textarea mounted while its content, language or available width changes.
@@ -267,7 +273,7 @@ export function EditorFields(props: Props) {
   const label = labels[key] || "เนื้อหา";
 
   if (Array.isArray(value)) {
-    const hasMinimum = key === "items";
+    const hasMinimum = key === "items" && !path.includes("studio");
     const add = () => onChange(path, [...value, newArrayItem(path)]);
     const move = (index: number, offset: number) => {
       const next = [...value];
@@ -442,6 +448,24 @@ export function EditorFields(props: Props) {
       </div>
     );
   }
+  if (typeof value === "boolean")
+    return (
+      <div className="cms-field cms-boolean">
+        <span>{label}</span>
+        <label htmlFor={inputId}>
+          <input
+            id={inputId}
+            type="checkbox"
+            checked={value}
+            onChange={(event) => onChange(path, event.target.checked)}
+          />
+          {value ? "เปิด" : "ปิด"}
+        </label>
+        {["approved", "verified"].includes(key) && (
+          <p className="cms-helper">แสดงบนเว็บไซต์เมื่อยืนยันแล้วเท่านั้น</p>
+        )}
+      </div>
+    );
   if (typeof value !== "string") return null;
   if (key === "id")
     return (
@@ -451,7 +475,7 @@ export function EditorFields(props: Props) {
     );
   if (["image", "logo_url", "videoPoster", "videoUrl"].includes(key))
     return <MediaField {...props} value={value} />;
-  if (key === "defaultLocale" || key === "icon" || key === "surface")
+  if (["defaultLocale", "icon", "surface", "category", "status"].includes(key))
     return (
       <div className="cms-field">
         <label htmlFor={inputId}>{label}</label>
@@ -460,17 +484,29 @@ export function EditorFields(props: Props) {
           value={value}
           onChange={(event) => onChange(path, event.target.value)}
         >
-          {(key === "defaultLocale"
-            ? [
-                ["th", "ภาษาไทย"],
-                ["en", "English"],
-              ]
-            : key === "surface"
+          {(key === "category"
+            ? ["web", "mobile", "game", "food", "business", "internal"].map(
+                (option) => [option, labels[option]],
+              )
+            : key === "status"
               ? [
-                  ["dark", "พื้นเข้ม"],
-                  ["light", "พื้นอ่อน"],
+                  ["concept", "Concept — ตัวอย่างแนวคิด"],
+                  ["prototype", "Prototype — ต้นแบบ"],
+                  ["delivered", "Delivered — ส่งมอบแล้ว"],
                 ]
-              : iconOptions
+              : key === "defaultLocale"
+                ? [
+                    ["th", "ภาษาไทย"],
+                    ["en", "English"],
+                  ]
+                : key === "surface"
+                  ? [
+                      ["dark", "พื้นเข้ม"],
+                      ["light", "พื้นอ่อน"],
+                    ]
+                  : path[1] === "studio"
+                    ? studioIconOptions
+                    : iconOptions
           ).map(([option, name]) => (
             <option key={option} value={option}>
               {name}

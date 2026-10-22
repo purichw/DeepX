@@ -1277,3 +1277,46 @@
     scroll-behavior: auto !important;
   }
 }
+.cms-page-picker {
+  padding: 0 18px 18px;
+  display: grid;
+  gap: 7px;
+}
+.cms-page-picker label {
+  font-size: 12px;
+  color: #a6bfcb;
+}
+.cms-page-picker select {
+  width: 100%;
+  padding: 9px;
+  background: #092432;
+  color: #e7f5fb;
+  border: 1px solid #31515f;
+  border-radius: 6px;
+  font: inherit;
+  text-align: center;
+}
+.cms-page-picker p {
+  margin: 0;
+  font-size: 10px;
+  color: #8eaab9;
+  line-height: 1.5;
+}
+.cms-boolean > label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 13px !important;
+}
+.cms-boolean input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  accent-color: #00b8df;
+}
+.cms-boolean > span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #bcd3df;
+}

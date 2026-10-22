@@ -39,6 +39,8 @@ import {
 } from "lucide-react";
 import { siteSchema, type Locale, type SiteData } from "../content";
 import { Website } from "../App";
+import { StudioWebsite } from "../studio/StudioWebsite";
+import { studioIdentityErrors } from "../studio/schema";
 import { Modal } from "../components/Modal";
 import { NeuralX } from "../components/NeuralX";
 import { cmsClient, requestCms } from "./client";
@@ -48,6 +50,7 @@ import {
   labels,
   sectionPath,
   sections,
+  studioSections,
   setAt,
   type Path,
   type Workspace,
@@ -272,6 +275,7 @@ export default function CmsApp() {
   const [workspace, setWorkspace] = useState<Workspace | null>(null);
   const [document, setDocument] = useState<SiteData | null>(null);
   const [section, setSection] = useState<string>("hero");
+  const [page, setPage] = useState<"deepx" | "studio">("deepx");
   const [locale, setLocale] = useState<Locale>("th");
   const [query, setQuery] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -420,13 +424,24 @@ export default function CmsApp() {
   function validate(): SiteData | null {
     const result = siteSchema.safeParse(document);
     if (result.success) {
+      if (
+        result.data.content.studio &&
+        studioIdentityErrors(result.data.content.studio).length
+      ) {
+        setError(
+          "ยังบันทึกไม่ได้: รายการใน Product Studio มีรหัสซ้ำ กรุณาโหลดฉบับร่างใหม่ก่อนเพิ่มรายการอีกครั้ง",
+        );
+        return null;
+      }
       setIssues([]);
       return result.data;
     }
     const next = result.error.issues.map((issue) => ({
       section:
         issue.path[0] === "content"
-          ? String(issue.path[1])
+          ? issue.path[1] === "studio"
+            ? `studio.${String(issue.path[2])}`
+            : String(issue.path[1])
           : issue.path[0] === "partners"
             ? "partner_records"
             : "case_studies",
@@ -436,7 +451,8 @@ export default function CmsApp() {
           typeof part === "number"
             ? `รายการ ${part + 1}`
             : labels[String(part)] ||
-              sections.find((item) => item.key === part)?.title ||
+              [...sections, ...studioSections].find((item) => item.key === part)
+                ?.title ||
               "เนื้อหา",
         )
         .join(" › "),
@@ -572,6 +588,7 @@ export default function CmsApp() {
     setConfirm({ title, body, action });
   }
   function goToSection(key: string) {
+    setPage(key.startsWith("studio.") ? "studio" : "deepx");
     setSection(key);
     setSidebarOpen(false);
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -649,13 +666,23 @@ export default function CmsApp() {
           </span>
           <strong>ยังไม่ใช่เว็บไซต์จริง</strong>
         </div>
-        <Website data={document} />
+        {page === "studio" && document.content.studio ? (
+          <StudioWebsite
+            data={document}
+            studio={document.content.studio}
+            preview
+          />
+        ) : (
+          <Website data={document} />
+        )}
       </div>
     );
 
+  const pageSections = page === "studio" ? studioSections : sections;
   const currentSection =
-    sections.find((item) => item.key === section) || sections[0];
-  const filteredSections = sections.filter((item) =>
+    [...sections, ...studioSections].find((item) => item.key === section) ||
+    pageSections[0];
+  const filteredSections = pageSections.filter((item) =>
     `${item.title} ${item.description}`
       .toLocaleLowerCase()
       .includes(query.toLocaleLowerCase()),
@@ -676,7 +703,7 @@ export default function CmsApp() {
         </div>
         <div className="cms-topbar-right">
           <a
-            href="/"
+            href={page === "studio" ? "/studio" : "/"}
             target="_blank"
             rel="noreferrer"
             className="cms-button cms-quiet"
@@ -724,6 +751,25 @@ export default function CmsApp() {
               aria-label="ค้นหาส่วนเนื้อหา"
             />
           </div>
+          <div className="cms-page-picker">
+            <label htmlFor="cms-page">หน้าที่แก้ไข</label>
+            <select
+              id="cms-page"
+              value={page}
+              onChange={(event) => {
+                const next = event.target.value as "deepx" | "studio";
+                setPage(next);
+                setSection(next === "studio" ? "studio.hero" : "hero");
+                setQuery("");
+              }}
+            >
+              <option value="deepx">DeepX AI</option>
+              <option value="studio" disabled={!document?.content.studio}>
+                Product Studio
+              </option>
+            </select>
+            <p>ฉบับร่างและปุ่มเผยแพร่ใช้ร่วมกันทั้งสองหน้า</p>
+          </div>
           <nav aria-label="ส่วนเนื้อหาเว็บไซต์">
             {filteredSections.map((item) => {
               const Icon = sectionIcons[item.icon];
@@ -766,7 +812,8 @@ export default function CmsApp() {
           <div className="cms-page-heading">
             <div>
               <p className="cms-breadcrumb">
-                เว็บไซต์ <ChevronRight size={13} />
+                {page === "studio" ? "Product Studio" : "DeepX AI"}{" "}
+                <ChevronRight size={13} />
                 เนื้อหา
               </p>
               <h1>{currentSection.title}</h1>
@@ -848,7 +895,7 @@ export default function CmsApp() {
                 onClick={() =>
                   ask(
                     "เผยแพร่ฉบับร่างนี้?",
-                    "เนื้อหาทุกส่วน ผลงาน และพันธมิตรในฉบับร่างนี้จะปรากฏบนเว็บไซต์จริงพร้อมกันเมื่อผู้เข้าชมโหลดหน้าใหม่",
+                    "เนื้อหา DeepX AI และ Product Studio รวมทั้งผลงานและพันธมิตรในฉบับร่างนี้จะเผยแพร่พร้อมกัน ผู้เข้าชมจะเห็นเมื่อโหลดหน้าใหม่ ส่วนข้อมูลค้นหา Google ต้องอัปเดต build ตามขั้นตอนเผยแพร่",
                     () => void publish(),
                   )
                 }
@@ -936,7 +983,7 @@ export default function CmsApp() {
                   <h2>แก้ไขเนื้อหา</h2>
                   <span>{locale === "th" ? "ภาษาไทย" : "English"}</span>
                 </div>
-                {section === "site" && (
+                {(section === "site" || section === "studio.page") && (
                   <p className="cms-section-note">
                     หัวเรื่องและคำอธิบายของเว็บไซต์ใช้กับข้อมูลค้นหา (SEO) ด้วย
                     ข้อมูล SEO ใน HTML จะเปลี่ยนเมื่อเว็บไซต์ build ใหม่

@@ -1,5 +1,25 @@
 # Asset provenance
 
+## Product Studio — 2026-10-21
+
+The owner supplied Studio desktop/tablet/mobile references in
+`docs/references/studio/` and approved using Concept portfolio entries. These
+reference files are documentation only and are not shipped as page screenshots.
+
+The 11 images in `public/images/studio/` were created with the image-generation
+tool for this implementation and exported as optimized WebP (about 1 MiB total):
+`hero`, `web`, `mobile`, `game`, `food`, `business`, `internal`, `ai`, `journey`,
+`contact`, and `focus`. They illustrate digital-product concepts, not screenshots
+of shipped client products. The Cloudseed scene uses an original small robot and
+floating-island world, not the Ragnarok characters/logo in the desktop reference.
+No portrait is used to imply a customer testimonial. All image references and
+descriptive alt text are owned by CMS fields and can be replaced there.
+
+The ecosystem reuses the existing official-source logo files documented below.
+Dark surfaces preserve readability of white official marks on Studio's light page.
+
+## DeepX AI references and assets
+
 The three mockups were supplied by the project owner on 2026-10-16:
 
 - `references/desktop.png` — desktop composition and materials

@@ -10,7 +10,7 @@
     "typecheck": "tsc -b",
     "test:content": "node --experimental-strip-types --test tests/content.test.ts",
     "test:seo": "node --experimental-strip-types --test tests/seo.test.ts",
-    "test": "node --experimental-strip-types --test tests/content.test.ts tests/seo.test.ts src/cms/model.test.ts",
+    "test": "node --experimental-strip-types --test tests/content.test.ts tests/seo.test.ts tests/studio.test.ts src/cms/model.test.ts",
     "check:schema": "node scripts/check-cms-schema.mjs"
   },
   "engines": {

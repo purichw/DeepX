@@ -106,7 +106,84 @@ export const sections = [
   },
 ] as const;
 
+export const studioSections = [
+  {
+    key: "studio.page",
+    title: "แบรนด์ เมนู และ SEO",
+    description: "ชื่อ Product Studio เมนู และข้อมูลค้นหาของ /studio",
+    icon: "settings",
+  },
+  {
+    key: "studio.hero",
+    title: "ส่วนเปิดหน้า Studio",
+    description: "หัวเรื่อง ภาพอุปกรณ์ และตัวเลขที่มีหลักฐานยืนยัน",
+    icon: "layout",
+  },
+  {
+    key: "studio.ecosystem",
+    title: "เครือข่าย DeepX",
+    description: "ข้อความแนะนำเครือข่าย ใช้รายชื่อพันธมิตรส่วนกลางร่วมกัน",
+    icon: "users",
+  },
+  {
+    key: "studio.portfolio",
+    title: "ผลงานและตัวอย่าง Concept",
+    description: "หมวดหมู่ รูปภาพ รายละเอียด และสถานะผลงานทั้ง 6 ประเภท",
+    icon: "briefcase",
+  },
+  {
+    key: "studio.services",
+    title: "บริการของ Studio",
+    description: "รายการบริการและรายละเอียดที่เปิดอ่านได้",
+    icon: "layers",
+  },
+  {
+    key: "studio.process",
+    title: "กระบวนการทำงาน",
+    description: "ลำดับขั้นตอน ภาพประกอบ และรายละเอียดแต่ละขั้น",
+    icon: "list",
+  },
+  {
+    key: "studio.why",
+    title: "จุดเด่นและกลุ่มลูกค้า",
+    description: "คุณค่าของ Studio และข้อมูลสำหรับ SME",
+    icon: "layers",
+  },
+  {
+    key: "studio.ai",
+    title: "เชื่อมต่อ DeepX AI",
+    description: "ความสามารถ AI เสริมและลิงก์กลับไป DeepX",
+    icon: "layers",
+  },
+  {
+    key: "studio.testimonials",
+    title: "เสียงจากลูกค้า",
+    description:
+      "แสดงเฉพาะรีวิวที่ได้รับอนุญาตและยืนยันแล้ว ปิดส่วนนี้ได้เมื่อยังไม่มี",
+    icon: "users",
+  },
+  {
+    key: "studio.contact",
+    title: "ส่วนชวนติดต่อ Studio",
+    description: "ข้อความและภาพท้ายหน้า ช่องทางติดต่อใช้ค่าร่วมกับ DeepX",
+    icon: "mail",
+  },
+  {
+    key: "studio.footer",
+    title: "ท้ายหน้า Studio",
+    description: "คำอธิบายและกลุ่มลิงก์ท้ายหน้า",
+    icon: "list",
+  },
+  {
+    key: "studio.ui",
+    title: "ข้อความปุ่มของ Studio",
+    description: "ป้ายสถานะ ตัวกรอง และข้อความปุ่มภาษาไทย–อังกฤษ",
+    icon: "type",
+  },
+] as const;
+
 export function sectionPath(key: string): Path {
+  if (key.startsWith("studio.")) return ["content", "studio", key.slice(7)];
   return key === "case_studies"
     ? ["case_studies"]
     : key === "partner_records"
@@ -116,6 +193,7 @@ export function sectionPath(key: string): Path {
 // Keep legacy/reserved values in the saved document without presenting controls
 // that promise a public change the current renderer cannot produce.
 export function reservedField(path: Path): boolean {
+  if (path.join(".") === "content.studio.ui.services") return true;
   if (path[0] !== "content") return false;
   const section = path[1];
   const field = path.at(-1);
@@ -174,6 +252,44 @@ const item = () => ({
 });
 export function newArrayItem(path: Path): unknown {
   const last = path.at(-1);
+  if (path.includes("studio")) {
+    if (last === "metrics")
+      return {
+        id: crypto.randomUUID(),
+        value: "",
+        label: bilingual(),
+        verified: false,
+      };
+    if (last === "projects")
+      return {
+        id: crypto.randomUUID(),
+        title: bilingual(),
+        description: bilingual(),
+        detail: bilingual(),
+        image: "",
+        imageAlt: bilingual(),
+        position: "50% 50%",
+        category: "web",
+        status: "concept",
+        website: "",
+      };
+    if (last === "quotes")
+      return {
+        id: crypto.randomUUID(),
+        name: "",
+        role: bilingual(),
+        quote: bilingual(),
+        image: "",
+        approved: false,
+      };
+    if (last === "groups")
+      return { id: crypto.randomUUID(), title: bilingual(), links: [] };
+    if (last === "links" || last === "navigation")
+      return { label: bilingual(), href: "#studio-work" };
+    if (last === "items" && path.includes("process"))
+      return { ...item(), image: "", imageAlt: bilingual() };
+    return item();
+  }
   if (last === "case_studies")
     return {
       id: crypto.randomUUID(),
@@ -202,6 +318,41 @@ export function newArrayItem(path: Path): unknown {
   return item();
 }
 export const labels: Record<string, string> = {
+  unit: "ชื่อหน่วยธุรกิจ",
+  aiLabel: "ปุ่มไป DeepX AI",
+  closing: "หัวเรื่องบรรทัดท้าย",
+  enabled: "แสดงส่วนนี้บนเว็บไซต์",
+  verified: "มีหลักฐานยืนยันตัวเลขนี้แล้ว",
+  approved: "ได้รับอนุญาตและยืนยันคำรีวิวแล้ว",
+  filters: "ชื่อหมวดหมู่ตัวกรอง",
+  all: "ทุกหมวดหมู่",
+  web: "เว็บแพลตฟอร์ม",
+  mobile: "แอปมือถือ",
+  game: "เกมมือถือ",
+  food: "ร้านอาหาร",
+  business: "ระบบธุรกิจ SME",
+  internal: "ระบบภายใน",
+  projects: "รายการผลงาน",
+  category: "หมวดหมู่ผลงาน",
+  status: "สถานะผลงาน",
+  focusTitle: "หัวข้อกลุ่มลูกค้า",
+  focusBody: "คำอธิบายกลุ่มลูกค้า",
+  ctaLabel: "ข้อความปุ่มหลัก",
+  quotes: "รายการคำรีวิว",
+  quote: "คำรีวิว",
+  role: "ตำแหน่งและองค์กร",
+  groups: "กลุ่มเมนูท้ายหน้า",
+  links: "รายการลิงก์",
+  work: "ปุ่มดูผลงาน",
+  concept: "ป้าย Concept",
+  prototype: "ป้าย Prototype",
+  delivered: "ป้ายผลงานส่งมอบ",
+  projectLink: "ปุ่มเว็บไซต์ผลงาน",
+  services: "ป้ายบริการ",
+  contactTitle: "หัวข้อติดต่อทีม",
+  contactNote: "คำแนะนำก่อนติดต่อ",
+  noContact: "ข้อความเมื่อยังไม่มีช่องทางติดต่อ",
+  filterCount: "คำแนะนำจำนวนผลลัพธ์",
   surface: "พื้นหลังโลโก้",
   name: "ชื่อ",
   descriptor: "คำอธิบายใต้โลโก้",
@@ -285,6 +436,27 @@ export const iconOptions = [
   ["users", "ทีม"],
   ["graduation", "การศึกษา"],
   ["building", "อาคาร"],
+] as const;
+
+export const studioIconOptions = [
+  ...iconOptions.filter(([key]) =>
+    [
+      "atom",
+      "layers",
+      "code",
+      "workflow",
+      "chart",
+      "search",
+      "target",
+      "settings",
+      "brain",
+      "scan",
+    ].includes(key),
+  ),
+  ["phone", "แอปมือถือ"],
+  ["rocket", "เปิดตัว"],
+  ["box", "ผลิตภัณฑ์"],
+  ["shield", "คุณภาพและความปลอดภัย"],
 ] as const;
 
 export function itemTitle(

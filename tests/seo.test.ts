@@ -88,7 +88,7 @@ test("crawler files expose only the canonical public route; admin can be crawled
   );
   assert.deepEqual(
     [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]),
-    [canonicalUrl],
+    [canonicalUrl, `${canonicalUrl}studio`],
   );
   assert.ok(robots.includes(`Sitemap: ${canonicalUrl}sitemap.xml`));
   assert.ok(!robots.includes("Disallow:"));

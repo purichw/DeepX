@@ -5,6 +5,11 @@ CMS อยู่ที่ `/admin` ใช้แก้เนื้อหาเว
 และขอบเขตของระบบ ส่วนสถานะ deploy และผลทดสอบจริงอยู่ใน [RELEASE.md](RELEASE.md)
 รายการความสามารถในคู่มือนี้ไม่ใช่หลักฐานว่าทดสอบผ่านแล้วทั้งหมด
 
+Product Studio ที่ `/studio` ใช้ CMS และ workspace เดียวกัน เลือกหน้า **Product Studio**
+เพื่อแก้ 12 หมวดของหน้าใหม่ได้ ปุ่มเผยแพร่เผยแพร่ฉบับร่างทั้งสองหน้าพร้อมกัน
+รายละเอียด field-to-consumer, Concept, verified metrics และ approved reviews อยู่ใน
+[STUDIO.md](STUDIO.md#cms-workflow-and-field-coverage)
+
 ## เข้าใช้งานและแก้เนื้อหา
 
 1. เปิด [deepxworks.com/admin](https://deepxworks.com/admin) แล้วเข้าสู่ระบบด้วยบัญชีที่เจ้าของอนุญาต รองรับอีเมล/รหัสผ่าน

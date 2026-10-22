@@ -10,6 +10,7 @@
 - [Project brief](docs/PROJECT_BRIEF.md) — Business Model Canvas, ขอบเขตเว็บไซต์, mockup และข้อเท็จจริงที่เผยแพร่ได้
 - [Project map](docs/PROJECT_MAP.md) — โครงสร้างโค้ด, ข้อมูลสำหรับ CMS, คำสั่ง, สิทธิ์ฐานข้อมูล
 - [คู่มือ CMS](docs/CMS.md) — เข้าใช้งาน `/admin`, แก้เนื้อหาไทย–อังกฤษ, บันทึกร่าง และเผยแพร่
+- [Product Studio](docs/STUDIO.md) — หน้า `/studio`, ตัวอย่าง Concept, CMS และ SEO
 - [Release runbook](docs/RELEASE.md) — การเชื่อม Supabase/Vercel, verification และสถานะล่าสุด
 - [Asset sources](docs/ASSETS.md) — ภาพอ้างอิงและสิทธิ์ภาพประกอบ
 - [SEO และ Google Search Console](docs/SEO.md) — metadata จาก CMS, sitemap, canonical และการส่งเว็บเข้า Google
@@ -35,7 +36,7 @@ npm run dev
 Production content อ่านจาก Supabase เท่านั้น ไม่มี business copy ฝังใน React components
 และไม่มี seed fallback บน production
 
-เว็บไซต์อยู่ที่ `/` และ CMS อยู่ที่ `/admin` การเข้าสู่ระบบเพียงอย่างเดียวไม่ให้สิทธิ์แก้เว็บ:
+เว็บไซต์ AI อยู่ที่ `/`, Product Studio อยู่ที่ `/studio` และ CMS ทั้งสองหน้าอยู่ที่ `/admin` การเข้าสู่ระบบเพียงอย่างเดียวไม่ให้สิทธิ์แก้เว็บ:
 บัญชีต้องยืนยันอีเมลและอยู่ใน allowlist ของผู้ดูแลที่ตั้งฝั่งฐานข้อมูลด้วย
 ฉบับร่างเก็บบนเซิร์ฟเวอร์ แยกจากข้อมูลเผยแพร่ พร้อมตรวจ revision ก่อนบันทึกหรือเผยแพร่
 

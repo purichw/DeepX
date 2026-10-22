@@ -1,6 +1,6 @@
 # Project map
 
-Updated: 2026-10-18. Distinguish intended behavior below from verified deployment
+Updated: 2026-10-21. Distinguish intended behavior below from verified deployment
 state in [RELEASE.md](RELEASE.md).
 The Thai operator guide and complete field groups are in [CMS.md](CMS.md).
 
@@ -32,6 +32,7 @@ allowlist. No service key, database password or management token reaches the bro
 | --- | --- |
 | `src/App.tsx` | Public load/error states and shared `Website` renderer for live content and draft preview |
 | `src/content.ts` | Data contract, validation and published-content fetch |
+| `src/studio/`, `scripts/studio-seo.ts`, `tests/studio.test.ts` | Product Studio `/studio`, shared CMS preview, independent metadata/initial HTML; detailed map in `docs/STUDIO.md` |
 | `src/cms/` | CMS auth client, section navigation, editor fields and draft/publication workflow |
 | `src/components/` | Neural X, accessible native dialog, mobile card rail |
 | `src/components/HeroMedia.tsx` | CMS hero video/poster rendering, reduced-motion fallback and visibility-aware playback |
@@ -64,8 +65,11 @@ hero video/poster URLs, service descriptions, dialogs and UI translations come
 from these records.
 
 Keys: `site`, `hero`, `capabilities`, `industries`, `process`, `applications`,
-`caseStudies`, `why`, `ecosystem`, `partners`, `contact`, `insights`, `privacy`, `ui`.
+`caseStudies`, `why`, `ecosystem`, `partners`, `contact`, `insights`, `privacy`, `ui`, `studio`.
 The contract in `src/content.ts` is the canonical field/type definition.
+The optional `studio` section is defined by `src/studio/schema.ts`; once present,
+older editor clients cannot save a document that omits it. The public Studio
+route requires published Studio content; it never synthesizes the bootstrap seed.
 
 Most text uses `{ "th": "...", "en": "..." }`. Icons use a constrained registry
 in `App.tsx`; raw HTML is never rendered. Images support same-site `/images/`

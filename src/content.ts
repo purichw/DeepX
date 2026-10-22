@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { studioSchema } from "./studio/schema.ts";
 
 export type Locale = "th" | "en";
 const text = z.object({ th: z.string().min(1), en: z.string().min(1) });
@@ -43,6 +44,8 @@ const partner = z.object({
 
 export const siteSchema = z.object({
   content: z.object({
+    // Optional for older published documents; never synthesize a runtime seed.
+    studio: studioSchema.optional(),
     site: z.object({
       name: z.string(),
       descriptor: z.string(),

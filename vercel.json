@@ -3,7 +3,13 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/admin/:path*", "destination": "/index.html" }],
+  "redirects": [
+    { "source": "/studio/", "destination": "/studio", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/admin/:path*", "destination": "/index.html" },
+    { "source": "/studio", "destination": "/studio/index.html" }
+  ],
   "headers": [
     {
       "source": "/admin/:path*",

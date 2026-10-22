@@ -580,6 +580,7 @@ export function Website({ data }: { data: SiteData }) {
                   {t(item.label)}
                 </a>
               ))}
+              {c.studio && <a href="/studio">{c.studio.page.unit}</a>}
               <button onClick={() => setDialog("insights")}>
                 {t(c.ui.insights)}
               </button>

@@ -1,6 +1,6 @@
 # SEO และ Google Search Console
 
-เว็บไซต์หลักคือ `https://deepxworks.com/` มี public URL เดียวใน sitemap;
+เว็บไซต์หลักคือ `https://deepxworks.com/` มี public URL สองหน้าใน sitemap: `/` และ `/studio`;
 เมนู `#capabilities`, `#industries` และส่วนอื่นเป็น anchor ในหน้าเดียวกัน
 ไม่ใช่หน้าแยก ห้ามเพิ่ม anchor, หน้า `/admin` หรือภาษา EN ที่ยังไม่มี URL แยกลง sitemap
 
@@ -27,9 +27,15 @@
   ซึ่งเป็นต้นฉบับสัญลักษณ์ DeepX เดิม ไม่เปลี่ยน URL ไฟล์บ่อย และต้องเปิดให้
   Googlebot-Image เข้าถึงได้ การเปลี่ยนไอคอนต้อง export ทั้งสองไฟล์และ deploy
 
-ไม่มีการเปลี่ยนข้อความธุรกิจหรือหน้าตา desktop/mobile ในรอบ SEO นี้
-เว็บไซต์ยัง render เนื้อหาหลักด้วย JavaScript จาก CMS; ใช้ URL Inspection แบบ live
+หน้าแรกยัง render เนื้อหาหลักด้วย JavaScript จาก CMS; ใช้ URL Inspection แบบ live
 ตรวจว่า Google render ได้จริงเมื่อวินิจฉัยปัญหา indexing ไม่อาศัย Lighthouse อย่างเดียว
+
+Product Studio ใช้ `scripts/studio-seo.ts` สร้าง canonical `https://deepxworks.com/studio`
+และ WebPage/Service/BreadcrumbList พร้อม HTML เนื้อหาเริ่มต้นใน `dist/studio/index.html`
+จาก published CMS โดยเฉพาะ ไม่ใช้ title/description ของหน้าแรกและไม่สร้างคะแนนรีวิวสมมติ
+Vercel ส่งเอกสารนี้ที่ `/studio`; `/studio/` redirect ถาวรมาที่ `/studio`
+หลังได้รับอนุญาตและ deploy หน้าใหม่แล้ว ให้ตรวจ URL นี้ใน property เดิมและ Request indexing
+ได้หนึ่งครั้ง การเตรียม SEO ในเครื่องยังไม่เท่ากับส่งคำขอหรือ indexed แล้ว
 
 ## ตรวจและเผยแพร่
 
@@ -61,16 +67,23 @@ SEO 100/100 คือผ่าน automated audits ในหมวด SEO ขอ
 หากยังไม่มีผลยืนยันจาก Search Console; ดูสถานะจริงใน `docs/RELEASE.md`
 
 1. เปิด Search Console ของ property `https://deepxworks.com/` ด้วยบัญชีเจ้าของ
-2. ยืนยันผ่าน HTML meta tag ที่ Google ออกให้และเว็บ production ส่งกลับจริง
+2. ยืนยันด้วย DNS TXT หรือ HTML meta tag ที่ Google ออกให้และตรวจพบจริง
+   property ใหม่ยืนยันผ่าน DNS TXT ใน Vercel แล้วเมื่อ 2026-10-19; ต้องเก็บ record นี้ไว้
+   ส่วน HTML meta tag เดิมยังคงอยู่ ไม่ต้องเปลี่ยนเพื่อยืนยันโดเมนใหม่นี้
 3. ส่ง `https://deepxworks.com/sitemap.xml` ใน Sitemaps แล้วตรวจสถานะการอ่าน
-4. ตรวจ URL หน้าแรกด้วย URL Inspection และ Test live URL; ถ้าเข้าถึง/จัดทำดัชนีได้
-   ให้ Request indexing แล้วบันทึกผลที่ Google ตอบกลับ
+4. ตรวจ URL หน้าแรกด้วย URL Inspection; หากยังไม่ indexed หรือเนื้อหาสำคัญเปลี่ยน
+   ให้ใช้ Test live URL ตรวจการเข้าถึงก่อน Request indexing และบันทึกผล
+   หาก indexed แล้วและ canonical ถูกต้อง ไม่ต้องส่งคำขอซ้ำโดยไม่มีเหตุใหม่
 5. แยกสถานะ verified / sitemap submitted / indexing requested / indexed ให้ชัด
    การส่งคำขอสำเร็จไม่เท่ากับ Google จัดทำดัชนีแล้ว; ดู Page indexing ภายหลัง
 
 การแก้ metadata/social/JSON-LD ใน CMS ต้องเผยแพร่แล้ว rebuild/deploy ใหม่
 ปุ่มเผยแพร่ CMS ไม่ได้สั่ง deploy หรือส่งคำขอ indexing อัตโนมัติ
 ผลรอบล่าสุดอยู่ใน `docs/RELEASE.md` ไม่ถือเอกสารนี้เป็นสถานะ Google แบบ realtime
+
+ผลตรวจ 2026-10-19: หน้าแรก `deepxworks.com` indexed และ Google เลือก canonical
+เป็นโดเมนใหม่แล้ว; sitemap มีสถานะ Success และ Google รับคำขอ Change of Address
+จาก `deepxsolution.com` แล้ว โดยการประมวลผลย้ายเว็บยังอยู่ระหว่างดำเนินการ
 
 ## ไอคอนในผลค้นหา
 
