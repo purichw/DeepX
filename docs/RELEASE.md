@@ -16,13 +16,15 @@ push-only action; do not enable deployment automation without explicit approval.
 An explicit instruction for the current round does not need repeat confirmation.
 The runbook commands and historical releases below do not grant authorization.
 
-## Product Studio — release authorized, 2026-10-22
+## Product Studio — released, 2026-10-22
 
 The owner requested the software house wing at `/studio` with CMS and Google
 discovery, and approved six Concept projects. The owner explicitly authorized
-**push and deployment for this round on October 22, 2026**. Production route and
-Google indexing remain pending release verification. The prior homepage SEO score is not a
-score for Studio. See [STUDIO.md](STUDIO.md) for the route, CMS and recovery map.
+**push and deployment for this round on October 22, 2026**. Source
+`4dd03ee26c59e7bcf481d1a5c5df08583958d5c7` is pushed to `main` and live at
+`https://deepxworks.com/studio`. Google accepted the indexing request; actual
+indexing remains pending. The prior homepage SEO score is not a score for Studio.
+See [STUDIO.md](STUDIO.md) for the route, CMS and recovery map.
 
 - Added isolated responsive Studio UI, six generated Concept illustrations,
   filters/details, shared contacts, editable service/process/AI/footer sections,
@@ -58,11 +60,49 @@ public before/after JSON, desktop/tablet/mobile captures and generated HTML.
 Browser screenshots contain extra capture-canvas padding; review images crop it
 using observed DOM width/height, retaining the actual page pixels.
 
-Next authorized release: commit/push the reviewed source, deploy once with the
-existing runbook, verify `/studio`, `/studio/`, homepage/admin and fresh assets,
-then inspect/request indexing for `https://deepxworks.com/studio` in the existing
-Search Console property and verify the updated sitemap. Do not report a request
-as indexed until Google supplies that evidence.
+Release closeout:
+
+- Push completion was verified against the remote `main` SHA. No GitHub Actions
+  workflow or Git integration was introduced. Existing local tests/build/schema
+  and CMS mutation evidence were reused for the unchanged release candidate.
+- Preview `dpl_BpTc8PifJMNDGiTQF2vHEAhuBS49`
+  (`deepx-5i89jhlco-purich-w.vercel.app`) built successfully. Its `/studio` document
+  matched the local build; the browser rendered published CMS content and the
+  trailing-slash redirect worked. Preview protection remained enabled.
+- One `vercel promote` call produced production deployment
+  `dpl_GaXaFNhC8atPWvw1bC4cpL4yPkdT`
+  (`deepx-mf2v085ji-purich-w.vercel.app`). Vercel rebuilt for the production
+  environment during promotion, rather than merely moving the preview alias.
+  It is READY, aliased to `deepxworks.com`, and its metadata confirms source
+  `4dd03ee26c59e7bcf481d1a5c5df08583958d5c7`. Production build took about 7.6s;
+  there was no duplicate deploy or pending promotion.
+- Production `/studio` returns 200 with its own canonical and no noindex;
+  `/studio/` returns 308 to `/studio`. `/admin` returns 200 with noindex/nofollow.
+  Both old domains preserve `/studio` and query parameters in their 308 redirect.
+  All 32 checked HTML, JS/CSS, font, Studio image, favicon and crawler files match
+  the checked local build byte-for-byte.
+- Production Chrome checks at 1440px and 390px pass without horizontal overflow.
+  Portfolio filtering, Concept details, Escape, mobile navigation and contact
+  links work. All 19 image elements load after scrolling, including all 11 new
+  Studio assets. Public Studio, homepage and authenticated CMS have no captured
+  warning/error logs. Homepage copy, canonical and play-once video remain intact.
+- The existing production admin session opens the new Product Studio selector
+  and editable fields, with draft/published revision 12 and no unsaved changes.
+  No repeat content mutation or authentication-setting change was needed.
+- Search Console initially reported Studio as unknown to Google. Live Test on
+  October 22 at 13:42 Bangkok time returned **URL is available to Google**,
+  **Page can be indexed**, and one valid Breadcrumb item. One Request indexing
+  submission returned **Indexing requested**, added to the priority crawl queue.
+  The updated sitemap was submitted once and reports **Success**, last read
+  October 22, **2 discovered pages**. This is not yet evidence of Studio indexing.
+
+Fresh evidence: `artifacts/studio/production-{deployment-api,assets,route-check}.json`,
+`production-desktop-raw.png`, `production-mobile.png`, `production-cms.png`,
+`gsc-indexing-requested.png` and `gsc-sitemap-success.png`. These release captures
+have native page dimensions and need no padding crop. Physical iOS/Safari and a
+new Lighthouse score were not tested. Documentation closeout needs no redeploy.
+Recovery baseline is `dpl_DjjDZRH7HVFDoroxcqaiQ9yePdT9`; reverting source must not
+drop the additive Studio data or reset the existing CMS/database.
 
 ## Google Search Console — deepxworks.com, 2026-10-19
 

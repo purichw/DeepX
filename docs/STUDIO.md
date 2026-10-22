@@ -118,6 +118,13 @@ pixels, both languages, project filters/details, Escape/focus return, mobile men
 footer expansion and contact destinations. Safari/iOS hardware, production Vercel
 routing and Google indexing must not be inferred from this local evidence.
 
+October 22 release verification separately confirms production routing, byte
+parity for 32 deployed files, rendered media and desktop/mobile interactions,
+plus the authenticated Studio editor at revision 12. Google Live Test passed,
+the indexing request was accepted, and the sitemap reports two discovered pages.
+Actual Studio indexing is pending; see the exact deployment and evidence in
+[RELEASE.md](RELEASE.md). No new Lighthouse score is claimed.
+
 Screenshots live in ignored `artifacts/studio/`. The browser capture tool produced
 a canvas twice the DOM width/height with unused dark padding; final images crop
 only that padding using the recorded DOM dimensions, without changing page pixels.

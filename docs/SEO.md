@@ -37,6 +37,11 @@ Vercel ส่งเอกสารนี้ที่ `/studio`; `/studio/` redir
 หลังได้รับอนุญาตและ deploy หน้าใหม่แล้ว ให้ตรวจ URL นี้ใน property เดิมและ Request indexing
 ได้หนึ่งครั้ง การเตรียม SEO ในเครื่องยังไม่เท่ากับส่งคำขอหรือ indexed แล้ว
 
+ผลปล่อย Studio วันที่ 2026-10-22: `/studio` เปิดบน production แล้ว และ Google Live Test
+แจ้ง **URL is available to Google / Page can be indexed** พร้อม Breadcrumb ถูกต้อง 1 รายการ
+Google รับคำขอ **Indexing requested** แล้วหนึ่งครั้ง ส่วน sitemap สถานะ **Success**
+อ่านล่าสุด 22 ตุลาคมและพบ 2 หน้า การปรากฏจริงในผลค้นหายังรอ Google จัดทำดัชนี
+
 ## ตรวจและเผยแพร่
 
 ```sh
